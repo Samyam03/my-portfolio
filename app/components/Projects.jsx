@@ -172,7 +172,7 @@ const Projects = () => {
           layout
           className="space-y-8"
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}

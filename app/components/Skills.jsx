@@ -45,14 +45,16 @@ const Skills = () => {
       { name: 'Node.js', logo: '/logos/nodejs.svg' },
       { name: 'Express.js', logo: '/logos/express.svg' },
       { name: 'Angular', logo: '/logos/angular.svg' },
-      { name: 'Vue', logo: '/logos/vue.svg' }
+      { name: 'Vue', logo: '/logos/vue.svg' },
+      { name: 'PyTorch', logo: '/logos/pytorch.svg' }
     ],
     tools: [
       { name: 'Git', logo: '/logos/git.svg' },
       { name: 'GitHub', logo: '/logos/github.svg' },
       { name: 'Linux', logo: '/logos/linux.svg' },
       { name: 'Postman', logo: '/logos/postman.svg' },
-      { name: 'Figma', logo: '/logos/figma.svg' }
+      { name: 'Figma', logo: '/logos/figma.svg' },
+      { name: 'Docker', logo: '/logos/docker.svg' }
     ]
   };
 
@@ -105,7 +107,7 @@ const Skills = () => {
           layout
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {skills[activeCategory].map((skill, index) => (
               <motion.div
                 key={skill.name}
@@ -118,14 +120,18 @@ const Skills = () => {
                 className="bg-white/5 rounded-xl p-6 border border-white/10 hover:border-blue-500/50 transition-all duration-300"
               >
                 <div className="flex items-center space-x-4">
-                  <div className="w-8 h-8 relative flex-shrink-0">
-                    <Image
-                      src={skill.logo}
-                      alt={skill.name}
-                      width={32}
-                      height={32}
-                      className="w-full h-full object-contain"
-                    />
+                  <div className="w-8 h-8 relative flex-shrink-0 flex items-center justify-center">
+                    {typeof skill.logo === 'string' && skill.logo.startsWith('/') ? (
+                      <Image
+                        src={skill.logo}
+                        alt={skill.name}
+                        width={32}
+                        height={32}
+                        className="w-full h-full object-contain"
+                      />
+                    ) : (
+                      <span className="text-2xl">{skill.logo}</span>
+                    )}
                   </div>
                   <h3 className="text-lg font-semibold text-white">
                     {skill.name}

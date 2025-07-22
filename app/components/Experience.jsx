@@ -154,7 +154,7 @@ const Experience = () => {
             viewport={{ once: true }}
             className="lg:col-span-2"
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               <motion.div
                 key={activeTab}
                 initial={{ opacity: 0, y: 20 }}
