@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { StarfieldCanvas, BackToTopButton } from "./components/Effects";
+import { motion } from "framer-motion";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +24,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <StarfieldCanvas starCount={500} planetCount={3} showPlanets={true} showEmojis={true} />
+        <div className="relative z-10">
+          {children}
+        </div>
+        <BackToTopButton />
       </body>
     </html>
   );

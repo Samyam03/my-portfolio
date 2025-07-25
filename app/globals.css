@@ -71,9 +71,9 @@ body {
 
 /* Glassmorphism effect */
 .glass {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(16, 23, 42, 0.7); /* darker, more opaque glass */
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Gradient text */
@@ -194,4 +194,14 @@ body {
 
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
+}
+
+@media (max-width: 640px) {
+  .btn-primary, .btn-secondary {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+  .card-hover {
+    padding: 1rem;
+  }
 }
