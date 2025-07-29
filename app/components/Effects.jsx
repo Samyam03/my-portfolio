@@ -6,10 +6,10 @@ import { motion } from 'framer-motion';
 // Space Logo Component
 const SpaceLogo = ({ size = 'md', className = '' }) => {
   const sizeClasses = {
-    sm: 'w-8 h-8 text-sm',
-    md: 'w-10 h-10 text-lg',
-    lg: 'w-12 h-12 text-xl',
-    xl: 'w-16 h-16 text-2xl'
+    sm: 'w-10 h-10 text-sm',
+    md: 'w-14 h-14 text-lg',
+    lg: 'w-16 h-16 text-xl',
+    xl: 'w-20 h-20 text-2xl'
   };
 
   return (
@@ -18,134 +18,19 @@ const SpaceLogo = ({ size = 'md', className = '' }) => {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
-      {/* Outer nebula ring */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-blue-500/20"
-      />
-      {/* Inner nebula ring */}
-      <motion.div
-        animate={{ rotate: -360 }}
-        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-1 rounded-full bg-gradient-to-r from-purple-500/15 via-blue-500/15 to-purple-500/15"
-      />
-      {/* Main logo background */}
-      <div className="relative w-full h-full rounded-full bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 border border-blue-500/30 shadow-lg flex items-center justify-center overflow-hidden">
-        {/* Inner glow */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 rounded-full" />
-        {/* Floating stars inside */}
-        <div className="absolute inset-0">
-          {[...Array(3)].map((_, i) => {
-            const positions = [
-              { left: '20%', top: '25%' },
-              { left: '70%', top: '30%' },
-              { left: '45%', top: '70%' }
-            ];
-            const pos = positions[i];
-            return (
-              <motion.div
-                key={i}
-                className="absolute w-0.5 h-0.5 bg-blue-400 rounded-full"
-                style={pos}
-                animate={{
-                  opacity: [0, 1, 0],
-                  scale: [0.5, 1, 0.5],
-                }}
-                transition={{
-                  duration: 3,
-                  delay: i * 0.5,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-            );
-          })}
-        </div>
-        {/* SB Text */}
-        <motion.span
-          className="relative z-10 font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-white to-purple-400"
-          animate={{
-            textShadow: [
-              "0 0 5px rgba(59, 130, 246, 0.5)",
-              "0 0 10px rgba(147, 51, 234, 0.5)",
-              "0 0 5px rgba(59, 130, 246, 0.5)"
-            ]
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          SB
-        </motion.span>
+      {/* SB Logo Image */}
+      <div className="relative w-full h-full flex items-center justify-center">
+        <img 
+          src="/SB.png" 
+          alt="SB Logo" 
+          className="w-full h-full object-contain"
+        />
       </div>
-      {/* Outer glow effect */}
-      <motion.div
-        animate={{
-          boxShadow: [
-            "0 0 10px rgba(59, 130, 246, 0.3)",
-            "0 0 20px rgba(147, 51, 234, 0.3)",
-            "0 0 10px rgba(59, 130, 246, 0.3)"
-          ]
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute inset-0 rounded-full pointer-events-none"
-      />
     </motion.div>
   );
 };
 
-// Space Divider Component
-const SpaceDivider = ({ className = '' }) => {
-  return (
-    <div className={`relative h-16 overflow-hidden ${className}`}>
-      {/* Very subtle nebula gradient effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/3 to-transparent"></div>
-      {/* Minimal light particles */}
-      <div className="absolute inset-0">
-        {[...Array(3)].map((_, i) => {
-          const seed = i * 45.7;
-          const left = ((seed * 13) % 100) + '%';
-          const delay = i * 0.5;
-          return (
-            <motion.div
-              key={`light-${i}`}
-              className="absolute w-0.5 h-0.5 bg-blue-400/40 rounded-full"
-              style={{
-                left,
-                top: '50%',
-                transform: 'translateY(-50%)',
-              }}
-              animate={{
-                opacity: [0, 0.4, 0],
-                scale: [0.5, 1, 0.5],
-                y: [-5, 5, -5],
-              }}
-              transition={{
-                duration: 6,
-                delay,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          );
-        })}
-      </div>
-      {/* Very subtle center line */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-blue-400/10 to-transparent"></div>
-      </div>
-      {/* Subtle glow at edges */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/2 to-transparent"></div>
-    </div>
-  );
-};
+
 
 // Global Mouse Torch
 const GlobalMouseTorch = () => {
@@ -443,21 +328,10 @@ const StarfieldCanvas = ({ starCount = 80, planetCount = 3, showPlanets = true, 
 // Main Effects Component
 const Effects = ({ 
   children, 
-  className = '',
-  showSpaceDivider = false,
-  showSpaceLogo = false,
-  logoSize = 'md'
+  className = ''
 }) => {
   return (
     <div className={`relative overflow-hidden ${className}`}>
-      {/* Space Divider */}
-      {showSpaceDivider && <SpaceDivider />}
-      {/* Space Logo */}
-      {showSpaceLogo && (
-        <div className="absolute top-4 right-4 z-20">
-          <SpaceLogo size={logoSize} />
-        </div>
-      )}
       {/* Content */}
       <div className="relative z-10">
         {children}
@@ -467,4 +341,4 @@ const Effects = ({
 };
 
 export default Effects;
-export { SpaceLogo, SpaceDivider, GlobalMouseTorch, BackToTopButton, StarfieldCanvas }; 
+export { SpaceLogo, GlobalMouseTorch, BackToTopButton, StarfieldCanvas }; 

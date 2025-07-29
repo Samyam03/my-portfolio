@@ -137,15 +137,22 @@ const Projects = () => {
                 <div className="bg-white/5 rounded-xl overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all duration-300 min-h-[340px] flex flex-col justify-between">
                   <div className="flex flex-col lg:flex-row">
                     {/* Project Image */}
-                    <div className="lg:w-1/3 relative h-48 lg:h-auto bg-gradient-to-br from-blue-500/20 to-purple-500/20 overflow-hidden">
-                      <img 
-                        src={project.image} 
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span className="text-white font-semibold">View Details</span>
-                      </div>
+                    <div className="lg:w-1/3 relative h-48 lg:h-auto overflow-hidden">
+                      <a
+                        href={project.title.includes('ShopSphere') ? 'https://shopsphere-xi-three.vercel.app/' : project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full h-full"
+                      >
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 cursor-pointer"
+                        />
+                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          <span className="text-white font-semibold">Visit Website</span>
+                        </div>
+                      </a>
                     </div>
 
                     {/* Project Content */}

@@ -94,6 +94,12 @@ const Hero = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-start mb-7">
               <button
+                onClick={() => {
+                  document.getElementById('projects')?.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }}
                 className="px-7 py-2 rounded-lg bg-blue-600 text-white font-semibold shadow-md border border-blue-700 hover:bg-blue-700 hover:shadow-lg transition-all duration-150 flex items-center space-x-2 text-base"
               >
                 <span>Explore Projects</span>

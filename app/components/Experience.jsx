@@ -66,11 +66,9 @@ const Experience = () => {
       location: 'College of Pharmacy, Monroe, LA',
       description: 'Provided essential administrative support in a professional academic environment, managing student services and facilitating communication between students, faculty, and staff.',
       achievements: [
-        'Streamlined appointment scheduling system for students, improving efficiency and reducing wait times',
+        'Handled incoming calls and provided professional customer service to students, faculty, and staff',
         'Managed confidential student records and maintained organized filing systems ensuring data integrity',
         'Coordinated communication between students and faculty advisors, facilitating academic planning and support',
-        'Provided professional customer service to diverse student population, addressing inquiries and resolving issues',
-        'Assisted with event coordination and office management, supporting daily operations and workflow optimization',
         'Developed strong organizational skills while handling multiple priorities in a fast-paced academic environment'
       ],
       transferableSkills: [

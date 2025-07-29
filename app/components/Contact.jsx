@@ -37,19 +37,31 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: '📧',
+      icon: (
+        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4V8.99l8 6.99 8-6.99V18z"/>
+        </svg>
+      ),
       title: 'Email',
       value: 'samyambhattarai65@gmail.com',
       link: 'mailto:samyambhattarai65@gmail.com'
     },
     {
-      icon: '📱',
+      icon: (
+        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+      ),
       title: 'Phone',
       value: '+1 (916) 842-9229',
       link: 'tel:+19168429229'
     },
     {
-      icon: '💼',
+      icon: (
+        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.29c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.29h-3v-4.5c0-1.1-.9-2-2-2s-2 .9-2 2v4.5h-3v-9h3v1.22c.41-.72 1.39-1.22 2.5-1.22 1.93 0 3.5 1.57 3.5 3.5v5.5z"/>
+        </svg>
+      ),
       title: 'LinkedIn',
       value: 'linkedin.com/in/samyam-bhattarai',
       link: 'https://linkedin.com/in/samyam-bhattarai'
@@ -214,7 +226,7 @@ const Contact = () => {
                     whileHover={{ x: 10, scale: 1.02 }}
                     className="flex items-center space-x-4 p-4 md:p-5 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
                   >
-                    <div className="text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                    <div className="text-blue-400 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                       {info.icon}
                     </div>
                     <div className="min-w-0 flex-1">
