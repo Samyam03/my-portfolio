@@ -102,11 +102,10 @@ const Hero = () => {
                 </svg>
               </button>
               <a
-                href="/resume.pdf"
+                href="/Samyam_Bhattarai.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-7 py-2 rounded-lg bg-purple-600 text-white font-semibold shadow-md border border-purple-700 hover:bg-purple-700 hover:shadow-lg transition-all duration-150 flex items-center space-x-2 text-base"
-                download
               >
                 <span>View Resume</span>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -33,7 +33,7 @@ const Footer = () => {
         links: [
           { name: 'Blog', href: '#' },
           { name: 'Portfolio', href: '#' },
-          { name: 'Resume', href: '#' },
+          { name: 'Resume', href: '/Samyam_Bhattarai.pdf' },
           { name: 'GitHub', href: '#' },
           { name: 'LinkedIn', href: '#' },
         ]

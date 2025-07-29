@@ -39,37 +39,24 @@ const Contact = () => {
     {
       icon: '📧',
       title: 'Email',
-      value: 'samyam@example.com',
-      link: 'mailto:samyam@example.com'
+      value: 'samyambhattarai65@gmail.com',
+      link: 'mailto:samyambhattarai65@gmail.com'
     },
     {
       icon: '📱',
       title: 'Phone',
-      value: '+1 (555) 123-4567',
-      link: 'tel:+15551234567'
-    },
-    {
-      icon: '📍',
-      title: 'Location',
-      value: 'San Francisco, CA',
-      link: '#'
+      value: '+1 (916) 842-9229',
+      link: 'tel:+19168429229'
     },
     {
       icon: '💼',
       title: 'LinkedIn',
-      value: 'linkedin.com/in/samyam',
-      link: 'https://linkedin.com/in/samyam'
+      value: 'linkedin.com/in/samyam-bhattarai',
+      link: 'https://linkedin.com/in/samyam-bhattarai'
     }
   ];
 
-  const socialLinks = [
-    { name: 'GitHub', icon: '🐙', url: 'https://github.com/samyam', color: 'hover:text-gray-400' },
-    { name: 'LinkedIn', icon: '💼', url: 'https://linkedin.com/in/samyam', color: 'hover:text-blue-400' },
-    { name: 'Twitter', icon: '🐦', url: 'https://twitter.com/samyam', color: 'hover:text-blue-400' },
-    { name: 'Instagram', icon: '📷', url: 'https://instagram.com/samyam', color: 'hover:text-pink-400' },
-    { name: 'YouTube', icon: '📺', url: 'https://youtube.com/@samyam', color: 'hover:text-red-400' }
-  ];
-
+ 
   return (
     <section id="contact" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -89,23 +76,24 @@ const Contact = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              className="w-full"
             >
-              <div className="bg-white/5 rounded-xl p-8 border border-white/10">
-                <h3 className="text-2xl font-bold text-white mb-6">
-                  Send me a message
+              <div className="bg-white/5 rounded-xl p-6 md:p-8 border border-white/10 h-full">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-6">
+                  Connect with me
                 </h3>
                 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label htmlFor="name" className="block text-xs md:text-sm font-medium text-gray-300 mb-2">
                         Name
                       </label>
                       <input
@@ -115,12 +103,12 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
+                        className="w-full px-3 md:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 text-sm md:text-base"
                         placeholder="Your name"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label htmlFor="email" className="block text-xs md:text-sm font-medium text-gray-300 mb-2">
                         Email
                       </label>
                       <input
@@ -130,14 +118,14 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
+                        className="w-full px-3 md:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 text-sm md:text-base"
                         placeholder="your@email.com"
                       />
                     </div>
                   </div>
                   
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="subject" className="block text-xs md:text-sm font-medium text-gray-300 mb-2">
                       Subject
                     </label>
                     <input
@@ -147,13 +135,13 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
+                      className="w-full px-3 md:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 text-sm md:text-base"
                       placeholder="What's this about?"
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="message" className="block text-xs md:text-sm font-medium text-gray-300 mb-2">
                       Message
                     </label>
                     <textarea
@@ -162,9 +150,9 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       required
-                      rows={6}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 resize-none"
-                      placeholder="Tell me about your project..."
+                      rows={5}
+                      className="w-full px-3 md:px-4 py-2 md:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 resize-none text-sm md:text-base"
+                      placeholder="Send a message..."
                     />
                   </div>
 
@@ -173,7 +161,7 @@ const Contact = () => {
                     disabled={isSubmitting}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full bg-purple-600 text-white font-semibold py-4 px-8 rounded-lg border border-purple-700 shadow-md hover:bg-purple-700 hover:shadow-lg transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-purple-600 text-white font-semibold py-3 md:py-4 px-6 md:px-8 rounded-lg border border-purple-700 shadow-md hover:bg-purple-700 hover:shadow-lg transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base"
                   >
                     {isSubmitting ? (
                       <div className="flex items-center justify-center">
@@ -208,11 +196,11 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="space-y-8"
+              className="w-full space-y-6"
             >
               {/* Contact Info Cards */}
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-white mb-6">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-6">
                   Contact Information
                 </h3>
                 {contactInfo.map((info, index) => (
@@ -223,17 +211,17 @@ const Contact = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    whileHover={{ x: 10 }}
-                    className="flex items-center space-x-4 p-4 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-all duration-300 group"
+                    whileHover={{ x: 10, scale: 1.02 }}
+                    className="flex items-center space-x-4 p-4 md:p-5 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
                   >
-                    <div className="text-2xl group-hover:scale-110 transition-transform duration-300">
+                    <div className="text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                       {info.icon}
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-white">
+                    <div className="min-w-0 flex-1">
+                      <h4 className="font-semibold text-white text-sm md:text-base">
                         {info.title}
                       </h4>
-                      <p className="text-gray-300 text-sm">
+                      <p className="text-gray-300 text-xs md:text-sm truncate">
                         {info.value}
                       </p>
                     </div>
@@ -241,32 +229,7 @@ const Contact = () => {
                 ))}
               </div>
 
-              {/* Social Links */}
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-6">
-                  Follow Me
-                </h3>
-                <div className="flex flex-wrap gap-4">
-                  {socialLinks.map((social, index) => (
-                    <motion.a
-                      key={social.name}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.1, y: -5 }}
-                      whileTap={{ scale: 0.9 }}
-                      className={`text-3xl transition-colors duration-300 ${social.color}`}
-                      title={social.name}
-                    >
-                      {social.icon}
-                    </motion.a>
-                  ))}
-                </div>
-              </div>
+
 
               {/* Availability Status */}
               <motion.div
@@ -274,15 +237,15 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-500/30 rounded-lg p-6"
+                className="bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-500/30 rounded-lg p-5 md:p-6"
               >
                 <div className="flex items-center space-x-3 mb-3">
                   <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <h4 className="font-semibold text-white">
+                  <h4 className="font-semibold text-white text-sm md:text-base">
                     Currently Available
                   </h4>
                 </div>
-                <p className="text-gray-300 text-sm">
+                <p className="text-gray-300 text-xs md:text-sm leading-relaxed">
                   I'm currently accepting new projects and opportunities. 
                   Let's discuss how we can work together!
                 </p>

@@ -16,8 +16,6 @@ export default function Home() {
       <Navigation />
       <Hero />
       
-      <SpaceDivider />
-      
       <Effects intensity="medium" planetCount={3} starCount={30} showMouseTorch={false}>
         <About />
         <Skills />

@@ -9,10 +9,10 @@ const Experience = () => {
   const experiences = [
     {
       company: 'University Research Program',
-      position: 'Research Assistant - Computer Science Management',
+      position: 'Emerging Scholar for Spring 2023',
       duration: 'Spring 2023',
       location: 'Monroe, LA',
-      description: 'Conducted research on the importance of management principles in the computer science field as part of the Emerging Scholars Program.',
+      description: 'Helped in conducting research on the importance of management principles in the computer science field as part of the Emerging Scholars Program.',
       achievements: [
         'Investigated how management principles apply to software development and IT projects',
         'Analyzed the role of project management methodologies in computer science',
@@ -35,10 +35,10 @@ const Experience = () => {
     },
     {
       company: 'University Research Program',
-      position: 'Research Assistant - Technology in Education',
+      position: 'Emerging Scholar for Fall 2022',
       duration: 'Fall 2022',
       location: 'Monroe, LA',
-      description: 'Conducted research on how computers enhance Spanish language learning methodologies as part of the Emerging Scholars Program.',
+      description: 'Helped in conducting research on how computers enhance Spanish language learning methodologies as part of the Emerging Scholars Program.',
       achievements: [
         'Investigated the effectiveness of computer-assisted language learning (CALL)',
         'Analyzed how technology integration improves Spanish language acquisition',

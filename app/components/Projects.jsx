@@ -10,12 +10,12 @@ const Projects = () => {
     {
       id: 1,
       title: 'Splitz – Expense Splitting Application',
-      image: '/api/placeholder/400/300',
+      image: '/Splitz.png',
       description: 'Splitz is a full-stack, real-time expense splitting web application that enables users to split bills, track debts, and manage settlements with friends and groups. Built with modern web technologies and deployed on cloud infrastructure.',
       technologies: [
         'Next.js 15', 'React 19', 'TypeScript', 'Convex', 'Clerk', 'Tailwind CSS', 'Recharts'
       ],
-      liveUrl: '#',
+      liveUrl: 'https://splitz-smoky.vercel.app/',
       githubUrl: '#',
       features: [
         'User authentication system',
@@ -33,12 +33,12 @@ const Projects = () => {
     {
       id: 2,
       title: 'ShopSphere – E-commerce Website',
-      image: '/api/placeholder/400/300',
+      image: '/Shopsphere.png',
       description: 'A full-stack E-commerce platform with a customer-facing web app, admin dashboard, and robust backend. Features product browsing, cart, order management, admin controls, and secure authentication. Built with React, Node.js, Express, and MongoDB, and deployed on Vercel.',
       technologies: [
         'React', 'Vite', 'Node.js', 'Express', 'MongoDB', 'Cloudinary'
       ],
-      liveUrl: '#',
+      liveUrl: 'https://shopsphere-xi-three.vercel.app/',
       githubUrl: '#',
       features: [
         'Customer-facing web app (product browsing, cart, checkout, account management)',
@@ -54,12 +54,12 @@ const Projects = () => {
     {
       id: 3,
       title: 'ElevatePath – AI-Powered Career Development Platform',
-      image: '/api/placeholder/400/300',
+      image: '/Elevatepath.png',
       description: 'ElevatePath is a comprehensive AI-powered career development platform that helps users build professional resumes, generate personalized cover letters, prepare for technical interviews, and gain industry-specific insights. Built with modern web technologies and AI integration, it serves as a complete career management suite.',
       technologies: [
         'Next.js 15', 'React 19', 'Tailwind CSS', 'Prisma ORM', 'PostgreSQL', 'Clerk', 'Google Gemini AI'
       ],
-      liveUrl: '#',
+      liveUrl: 'https://elevatepath.vercel.app/',
       githubUrl: '#',
       features: [
         'AI-powered resume and cover letter generation',
@@ -76,12 +76,12 @@ const Projects = () => {
     {
       id: 4,
       title: 'NoteGenius – AI-Powered Study Assistant',
-      image: '/api/placeholder/400/300',
+      image: '/Notegenius.png',
       description: 'NoteGenius is an AI-powered study assistant that transforms PDF documents into interactive, intelligent study materials. It combines advanced document processing, semantic search, AI-powered Q&A, and real-time note-taking in a modern, responsive web interface.',
       technologies: [
         'Next.js 15', 'React 19', 'Tailwind CSS', 'Convex', 'Google Gemini 2.0 Flash', 'LangChain', 'Clerk'
       ],
-      liveUrl: '#',
+      liveUrl: 'https://notegenius-kappa.vercel.app/',
       githubUrl: '#',
       features: [
         'Upload and process PDF documents',
@@ -138,9 +138,11 @@ const Projects = () => {
                   <div className="flex flex-col lg:flex-row">
                     {/* Project Image */}
                     <div className="lg:w-1/3 relative h-48 lg:h-auto bg-gradient-to-br from-blue-500/20 to-purple-500/20 overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-purple-600/30 flex items-center justify-center">
-                        <span className="text-6xl opacity-50">🚀</span>
-                      </div>
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
                       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span className="text-white font-semibold">View Details</span>
                       </div>
@@ -191,7 +193,7 @@ const Projects = () => {
                         {project.title.includes('ShopSphere') ? (
                           <>
                             <motion.a
-                              href="https://your-frontend-url.com"
+                              href="https://shopsphere-xi-three.vercel.app/"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                               className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-300"
@@ -199,7 +201,7 @@ const Projects = () => {
                               Live Demo
                             </motion.a>
                             <motion.a
-                              href="https://your-admin-url.com"
+                              href="https://shopsphere-admin-rho.vercel.app/"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                               className="bg-purple-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors duration-300"
