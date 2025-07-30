@@ -4,48 +4,40 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
 const About = () => {
-  const [activeTab, setActiveTab] = useState('story');
+  const [activeTab, setActiveTab] = useState('background');
 
   const tabs = [
-    { id: 'story', label: 'My Story', icon: '📖' },
-    { id: 'values', label: 'Values', icon: '💎' },
+    { id: 'background', label: 'Background', icon: '🎓' },
+    { id: 'philosophy', label: 'Philosophy', icon: '💎' },
     { id: 'goals', label: 'Goals', icon: '🎯' },
   ];
 
-  const content = {
-    story: {
-      title: "My Journey",
-      description: "I'm a passionate developer who started coding at the age of 15. What began as curiosity has evolved into a deep love for creating digital experiences that make a difference. I believe in the power of technology to solve real-world problems and improve people's lives.",
-      details: [
-        "Started with HTML/CSS at 15, building simple websites",
-        "Discovered JavaScript and fell in love with interactive development",
-        "Learned React and modern web development practices",
-        "Built full-stack applications and worked on real projects",
-        "Continuously learning and staying updated with latest technologies"
-      ]
-    },
-    values: {
-      title: "What I Believe In",
-      description: "My core values drive everything I do, from the code I write to the relationships I build with clients and team members.",
-      details: [
-        "Clean, maintainable code that others can understand and build upon",
-        "User-centered design that prioritizes accessibility and usability",
-        "Continuous learning and staying curious about new technologies",
-        "Collaboration and knowledge sharing within the developer community",
-        "Delivering value and exceeding expectations in every project"
-      ]
-    },
-    goals: {
-      title: "Where I'm Heading",
-      description: "I have ambitious goals for my career and the impact I want to make in the tech world.",
-      details: [
-        "Build innovative products that solve real-world problems",
-        "Contribute to open-source projects and give back to the community",
-        "Mentor junior developers and help them grow in their careers",
-        "Work on cutting-edge technologies like AI and machine learning",
-        "Create a positive impact through technology and education"
-      ]
-    }
+  const aboutContent = {
+    description: "I am a committed student currently pursuing my undergraduate degree in Computer Science at the University of Louisiana at Monroe(ULM), with a solid foundation in computer science and practical experience in web development, acquired through both academic and personal projects. My primary expertise lies in full-stack web technologies, and I have recently started exploring the fundamentals of machine learning, with a strong desire to expand my knowledge in this domain.",
+    background: [
+      "Bachelor's degree in Computer Science at University of Louisiana at Monroe (ULM)",
+      "Completed core CS courses: Calculus, Data Structures & Algorithms, Computer Architecture",
+      "Studied programming fundamentals: Assembly Language, Object-Oriented Programming, Internet Programming",
+      "Advanced topics: Operating Systems, Statistics, Linear Algebra",
+      "Built web applications using React, Node.js, and modern frameworks",
+      "Developed full-stack projects combining frontend and backend technologies"
+    ],
+    philosophy: [
+      "Solving complex problems through innovative technological solutions",
+      "Writing code that is readable, well-documented, and easily maintainable",
+      "Creating interfaces that are intuitive and accessible to all users",
+      "Embracing new technologies and staying current with industry trends",
+      "Sharing knowledge and collaborating with fellow developers",
+      "Maintaining high standards of code quality and best practices"
+    ],
+    goals: [
+      "Master advanced full-stack development patterns and architectures",
+      "Complete machine learning courses and build ML-powered applications",
+      "Integrate AI/ML features into web applications for enhanced user experience",
+      "Work on projects that address real societal challenges",
+      "Contribute to open-source projects and build a strong portfolio",
+      "Stay updated with emerging technologies and industry best practices"
+    ]
   };
 
 
@@ -70,21 +62,34 @@ const About = () => {
           </motion.div>
 
           <div className="max-w-4xl mx-auto">
+            {/* Main Description */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <p className="text-gray-300 leading-relaxed text-lg max-w-4xl mx-auto">
+                {aboutContent.description}
+              </p>
+            </motion.div>
+
             {/* Tab Navigation */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="flex flex-wrap justify-center space-x-1 mb-12 bg-white/10 rounded-lg p-1 max-w-md mx-auto"
+              className="flex flex-wrap justify-center space-x-1 mb-12 bg-white/10 rounded-lg p-1 max-w-2xl mx-auto"
             >
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex-1 py-3 px-4 rounded-md text-sm font-medium transition-all duration-300 ${
+                  className={`flex-1 py-2 px-8 rounded-md text-sm font-medium transition-all duration-300 ${
                     activeTab === tab.id
-                      ? 'bg-blue-600 text-white shadow-lg'
+                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
                       : 'text-gray-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
@@ -104,80 +109,36 @@ const About = () => {
                 transition={{ duration: 0.3 }}
                 className="space-y-8"
               >
-                <div className="text-center">
-                  <h3 className="text-3xl font-bold text-white mb-6">
-                    {content[activeTab].title}
-                  </h3>
-                  <p className="text-gray-300 leading-relaxed text-lg max-w-3xl mx-auto">
-                    {content[activeTab].description}
-                  </p>
-                </div>
-                
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="space-y-4">
-                    {content[activeTab].details.slice(0, Math.ceil(content[activeTab].details.length / 2)).map((detail, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="flex items-start space-x-3 text-gray-300 bg-white/5 rounded-lg p-4 border border-white/10"
-                      >
-                        <span className="text-blue-400 mt-1 text-lg">•</span>
-                        <span>{detail}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                  <div className="space-y-4">
-                    {content[activeTab].details.slice(Math.ceil(content[activeTab].details.length / 2)).map((detail, index) => (
-                      <motion.div
-                        key={index + Math.ceil(content[activeTab].details.length / 2)}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="flex items-start space-x-3 text-gray-300 bg-white/5 rounded-lg p-4 border border-white/10"
-                      >
-                        <span className="text-blue-400 mt-1 text-lg">•</span>
-                        <span>{detail}</span>
-                      </motion.div>
-                    ))}
-                  </div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {aboutContent[activeTab].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className={`flex items-start space-x-3 text-gray-300 rounded-lg p-4 border ${
+                        activeTab === 'background' 
+                          ? 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20' 
+                          : activeTab === 'philosophy'
+                          ? 'bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-purple-500/20'
+                          : 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/20'
+                      }`}
+                    >
+                      <span className={`mt-1 text-lg ${
+                        activeTab === 'background' 
+                          ? 'text-blue-400' 
+                          : activeTab === 'philosophy'
+                          ? 'text-purple-400'
+                          : 'text-green-400'
+                      }`}>•</span>
+                      <span>{item}</span>
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
             </AnimatePresence>
 
-            {/* Quick Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
-            >
-              {[
-                { label: 'Projects Completed', value: '50+', icon: '🚀' },
-                { label: 'Years Experience', value: '3+', icon: '⏰' },
-                { label: 'Happy Clients', value: '25+', icon: '😊' },
-                { label: 'Technologies', value: '15+', icon: '🛠️' },
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="text-center p-6 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-all duration-300"
-                >
-                  <div className="text-3xl mb-2">{stat.icon}</div>
-                  <div className="text-3xl font-bold text-blue-400 mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-300 text-sm">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+
           </div>
         </div>
       </div>

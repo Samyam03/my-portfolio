@@ -93,7 +93,7 @@ const Skills = () => {
                 onClick={() => setActiveCategory(category.id)}
                 className={`flex items-center space-x-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   activeCategory === category.id
-                    ? 'bg-blue-600 text-white shadow-lg'
+                    ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
                     : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'
                 }`}
               >
@@ -118,7 +118,13 @@ const Skills = () => {
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ y: -5 }}
-                  className="bg-white/5 rounded-xl p-6 border border-white/10 hover:border-blue-500/50 transition-all duration-300"
+                  className={`rounded-xl p-6 border transition-all duration-300 ${
+                    activeCategory === 'languages'
+                      ? 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20 hover:border-blue-500/50'
+                      : activeCategory === 'frameworks'
+                      ? 'bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-purple-500/20 hover:border-purple-500/50'
+                      : 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/20 hover:border-green-500/50'
+                  }`}
                 >
                   <div className="flex items-center space-x-4">
                     <div className="w-8 h-8 relative flex-shrink-0 flex items-center justify-center">
@@ -149,7 +155,7 @@ const Skills = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            className="mt-16 bg-gradient-to-r from-blue-500/20 to-blue-600/20 rounded-xl p-8 border border-blue-500/30"
+            className="mt-16 bg-gradient-to-r from-indigo-500/20 to-purple-600/20 rounded-xl p-8 border border-indigo-500/30"
           >
             <h3 className="text-2xl font-bold text-white mb-4 text-center">
               Always Learning & Growing

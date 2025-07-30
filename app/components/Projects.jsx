@@ -24,8 +24,6 @@ const Projects = () => {
         '3 split types (equal, exact, percentage)',
         'Balance calculation engine',
         'Settlement management',
-        'Email notification system',
-        'Responsive dashboard',
         'Data visualization charts',
         'Cloud-native deployment on Vercel'
       ]
@@ -41,7 +39,7 @@ const Projects = () => {
       liveUrl: 'https://shopsphere-xi-three.vercel.app/',
       githubUrl: '#',
       features: [
-        'Customer-facing web app (product browsing, cart, checkout, account management)',
+        'Customer-facing web app (product browsing, cart, checkout)',
         'Admin dashboard for product, order, and user management',
         'RESTful API with Express.js',
         'MongoDB database with Mongoose models',
@@ -68,7 +66,6 @@ const Projects = () => {
         'Responsive design with dark mode',
         'Secure authentication with Clerk and OAuth',
         'Real-time form validation and feedback',
-        'Data visualization and analytics',
         'Export to PDF and Markdown',
         'Scalable, production-ready deployment'
       ]
@@ -91,8 +88,6 @@ const Projects = () => {
         'Responsive dashboard with 7 breakpoints',
         'Secure authentication with Clerk',
         'Rich text editing with TipTap',
-        'File storage and management',
-        'Optimistic UI updates and real-time database',
         'Accessible, mobile-first design'
       ]
     }
