@@ -91,7 +91,7 @@ const Skills = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveCategory(category.id)}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`flex items-center space-x-2 px-6 py-3 rounded-full font-medium transition-all duration-300 cursor-pointer ${
                   activeCategory === category.id
                     ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
                     : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'

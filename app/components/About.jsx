@@ -37,7 +37,7 @@ const About = () => {
       "Work on projects that address real societal challenges",
       "Contribute to open-source projects and build a strong portfolio",
       "Stay updated with emerging technologies and industry best practices"
-    ]
+      ]
   };
 
 
@@ -87,7 +87,7 @@ const About = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex-1 py-2 px-8 rounded-md text-sm font-medium transition-all duration-300 ${
+                  className={`flex-1 py-2 px-8 rounded-md text-sm font-medium transition-all duration-300 cursor-pointer ${
                     activeTab === tab.id
                       ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
                       : 'text-gray-300 hover:text-white hover:bg-white/10'
@@ -111,11 +111,11 @@ const About = () => {
               >
                 <div className="grid md:grid-cols-2 gap-6">
                   {aboutContent[activeTab].map((item, index) => (
-                    <motion.div
-                      key={index}
+                      <motion.div
+                        key={index}
                       initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
                       className={`flex items-start space-x-3 text-gray-300 rounded-lg p-4 border ${
                         activeTab === 'background' 
                           ? 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20' 
@@ -123,7 +123,7 @@ const About = () => {
                           ? 'bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-purple-500/20'
                           : 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/20'
                       }`}
-                    >
+                      >
                       <span className={`mt-1 text-lg ${
                         activeTab === 'background' 
                           ? 'text-blue-400' 
@@ -132,8 +132,8 @@ const About = () => {
                           : 'text-green-400'
                       }`}>•</span>
                       <span>{item}</span>
-                    </motion.div>
-                  ))}
+                      </motion.div>
+                    ))}
                 </div>
               </motion.div>
             </AnimatePresence>

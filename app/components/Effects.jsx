@@ -32,30 +32,6 @@ const SpaceLogo = ({ size = 'md', className = '' }) => {
 
 
 
-// Global Mouse Torch
-const GlobalMouseTorch = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-  const gradientStyle = {
-    background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.25), transparent 40%)`,
-    pointerEvents: 'none',
-  };
-  return (
-        <div 
-      className="fixed inset-0 z-10 transition-opacity duration-300"
-          style={gradientStyle}
-        />
-  );
-};
-
 // Back To Top Button
 const BackToTopButton = () => (
   <motion.button
@@ -82,14 +58,13 @@ const PLANET_COLORS = [
 ];
 const PLANET_EMOJIS = ["🌍", "🚀", "⚛️"];
 
-const StarfieldCanvas = ({ starCount = 80, planetCount = 3, showPlanets = true, showEmojis = true, showMouseTorch = true }) => {
+const StarfieldCanvas = ({ starCount = 80, planetCount = 3, showPlanets = true, showEmojis = true }) => {
   const canvasRef = useRef(null);
   const animationRef = useRef();
   const stars = useRef([]);
   const planets = useRef([]);
   const emojis = useRef([]);
-  const mouse = useRef({ x: null, y: null });
-  const torch = useRef({ x: null, y: null }); // for smooth interpolation
+  // Removed mouse and torch refs
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -98,28 +73,21 @@ const StarfieldCanvas = ({ starCount = 80, planetCount = 3, showPlanets = true, 
     let width = canvas.width = canvas.offsetWidth;
     let height = canvas.height = canvas.offsetHeight;
 
-    // Mouse torch event
-    function handleMouseMove(e) {
-      const rect = canvas.getBoundingClientRect();
-      mouse.current.x = e.clientX - rect.left;
-      mouse.current.y = e.clientY - rect.top;
-      if (torch.current.x === null || torch.current.y === null) {
-        torch.current.x = mouse.current.x;
-        torch.current.y = mouse.current.y;
-      }
-    }
-    if (showMouseTorch) {
-      window.addEventListener('mousemove', handleMouseMove);
-    }
+
 
     // Generate stars
-    stars.current = Array.from({ length: starCount }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      r: Math.random() * 1.2 + 0.3,
-      speed: Math.random() * 0.15 + 0.05,
-      twinkle: Math.random() * Math.PI * 2,
-    }));
+    stars.current = Array.from({ length: starCount }, () => {
+      const angle = Math.random() * 2 * Math.PI;
+      const speed = (Math.random() * 0.08 + 0.03); // moderate speed for balanced movement
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 1.2 + 0.3,
+        twinkle: Math.random() * Math.PI * 2,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+      };
+    });
 
     // Generate planets with fixed corner positions
     if (showPlanets) {
@@ -201,54 +169,30 @@ const StarfieldCanvas = ({ starCount = 80, planetCount = 3, showPlanets = true, 
       ctx.restore();
     }
 
-    function drawMouseTorch(ctx) {
-      if (!showMouseTorch || torch.current.x === null || torch.current.y === null) return;
-      const grad = ctx.createRadialGradient(
-        torch.current.x,
-        torch.current.y,
-        0,
-        torch.current.x,
-        torch.current.y,
-        0.5 // reduced from 1 to 0.5
-      );
-      grad.addColorStop(0, "rgba(59, 130, 246, 0.0075)"); // was 0.015
-      grad.addColorStop(1, "rgba(59, 130, 246, 0)");
-      ctx.save();
-      ctx.globalAlpha = 1;
-      ctx.beginPath();
-      ctx.arc(torch.current.x, torch.current.y, 0.5, 0, 2 * Math.PI); // reduced from 1 to 0.5
-      ctx.closePath();
-      ctx.fillStyle = grad;
-      ctx.fill();
-      ctx.restore();
-    }
+
 
     function animate() {
       ctx.clearRect(0, 0, width, height);
       const t = Date.now();
-      // Smoothly interpolate torch position toward mouse
-      if (mouse.current.x !== null && mouse.current.y !== null) {
-        torch.current.x += (mouse.current.x - torch.current.x) * 0.15;
-        torch.current.y += (mouse.current.y - torch.current.y) * 0.15;
-      }
-      // Draw mouse torch first
-      drawMouseTorch(ctx);
+
       // Draw stars
       for (let star of stars.current) {
-        // Gentle twinkle and slow drift
-        const twinkle = 0.6 + 0.4 * Math.sin(star.twinkle + t * 0.0015); // gentle, visible twinkle
+        // Gentle twinkle
+        const twinkle = 0.6 + 0.4 * Math.sin(star.twinkle + t * 0.0015);
         ctx.globalAlpha = twinkle;
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.r, 0, 2 * Math.PI);
         ctx.fillStyle = '#60a5fa';
         ctx.fill();
         ctx.shadowBlur = 0;
-        // Gentle downward drift
-        star.y += star.speed * 0.5;
-        if (star.y > height) {
-          star.y = 0;
-          star.x = Math.random() * width;
-        }
+        // Gentle drifting movement
+        star.x += star.vx;
+        star.y += star.vy;
+        // Wrap around edges
+        if (star.x < 0) star.x += width;
+        if (star.x > width) star.x -= width;
+        if (star.y < 0) star.y += height;
+        if (star.y > height) star.y -= height;
       }
       ctx.globalAlpha = 1;
       ctx.shadowBlur = 0;
@@ -310,11 +254,8 @@ const StarfieldCanvas = ({ starCount = 80, planetCount = 3, showPlanets = true, 
     return () => {
       cancelAnimationFrame(animationRef.current);
       window.removeEventListener('resize', handleResize);
-      if (showMouseTorch) {
-        window.removeEventListener('mousemove', handleMouseMove);
-      }
     };
-  }, [starCount, planetCount, showPlanets, showEmojis, showMouseTorch]);
+  }, [starCount, planetCount, showPlanets, showEmojis]);
           
           return (
     <canvas
@@ -341,4 +282,4 @@ const Effects = ({
 };
 
 export default Effects;
-export { SpaceLogo, GlobalMouseTorch, BackToTopButton, StarfieldCanvas }; 
+export { SpaceLogo, BackToTopButton, StarfieldCanvas }; 

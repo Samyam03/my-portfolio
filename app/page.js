@@ -7,12 +7,11 @@ import Experience from './components/Experience';
 import Leadership from './components/Leadership';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Effects, { GlobalMouseTorch } from './components/Effects';
+import Effects from './components/Effects';
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <GlobalMouseTorch />
       <Navigation />
       <Hero />
       

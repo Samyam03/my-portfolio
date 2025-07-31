@@ -120,7 +120,7 @@ const Experience = () => {
                     whileHover={{ x: 10 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setActiveTab(index)}
-                    className={`w-full text-left p-6 rounded-lg transition-all duration-300 ${
+                    className={`w-full text-left p-6 rounded-lg transition-all duration-300 cursor-pointer ${
                       activeTab === index
                         ? 'bg-blue-600/20 border border-blue-500/50'
                         : 'bg-white/5 border border-white/10 hover:bg-white/10'

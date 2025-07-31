@@ -198,7 +198,7 @@ const Projects = () => {
                               href="https://shopsphere-xi-three.vercel.app/"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-300"
+                              className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-300 cursor-pointer"
                             >
                               Live Demo
                             </motion.a>
@@ -206,7 +206,7 @@ const Projects = () => {
                               href="https://shopsphere-admin-rho.vercel.app/"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              className="bg-purple-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors duration-300"
+                              className="bg-purple-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors duration-300 cursor-pointer"
                             >
                               Admin Demo
                             </motion.a>
@@ -214,7 +214,7 @@ const Projects = () => {
                               href="https://github.com/your-repo"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              className="bg-white/10 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-white/20 transition-colors duration-300"
+                              className="bg-white/10 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-white/20 transition-colors duration-300 cursor-pointer"
                             >
                               GitHub
                             </motion.a>
@@ -225,7 +225,7 @@ const Projects = () => {
                               href={project.liveUrl}
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-300"
+                              className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-300 cursor-pointer"
                             >
                               Live Demo
                             </motion.a>
@@ -233,7 +233,7 @@ const Projects = () => {
                               href={project.githubUrl}
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              className="bg-white/10 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-white/20 transition-colors duration-300"
+                              className="bg-white/10 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-white/20 transition-colors duration-300 cursor-pointer"
                             >
                               GitHub
                             </motion.a>

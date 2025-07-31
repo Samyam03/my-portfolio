@@ -173,7 +173,7 @@ const Contact = () => {
                     disabled={isSubmitting}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full bg-purple-600 text-white font-semibold py-3 md:py-4 px-6 md:px-8 rounded-lg border border-purple-700 shadow-md hover:bg-purple-700 hover:shadow-lg transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base"
+                    className="w-full bg-purple-600 text-white font-semibold py-3 md:py-4 px-6 md:px-8 rounded-lg border border-purple-700 shadow-md hover:bg-purple-700 hover:shadow-lg transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base cursor-pointer"
                   >
                     {isSubmitting ? (
                       <div className="flex items-center justify-center">
@@ -224,7 +224,7 @@ const Contact = () => {
                     transition={{ delay: index * 0.1 }}
                     viewport={{ once: true }}
                     whileHover={{ x: 10, scale: 1.02 }}
-                    className="flex items-center space-x-4 p-4 md:p-5 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
+                    className="flex items-center space-x-4 p-4 md:p-5 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group cursor-pointer"
                   >
                     <div className="text-blue-400 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                       {info.icon}
