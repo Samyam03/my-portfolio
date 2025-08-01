@@ -59,20 +59,20 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 relative">
+    <section id="skills" className="py-12 sm:py-16 lg:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass p-8 md:p-12 rounded-2xl shadow-lg">
+        <div className="glass p-4 sm:p-6 md:p-8 lg:p-12 rounded-2xl shadow-lg">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 lg:mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
               Technical Skills
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-2">
               A comprehensive overview of my technical expertise
             </p>
           </motion.div>
@@ -83,7 +83,7 @@ const Skills = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-4 mb-12"
+            className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12"
           >
             {skillCategories.map((category) => (
               <motion.button
@@ -91,14 +91,14 @@ const Skills = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveCategory(category.id)}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-full font-medium transition-all duration-300 cursor-pointer ${
+                className={`flex items-center justify-center space-x-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 cursor-pointer text-sm sm:text-base ${
                   activeCategory === category.id
                     ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
                     : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'
                 }`}
               >
-                <span className="text-lg">{category.icon}</span>
-                <span>{category.name}</span>
+                <span className="text-base sm:text-lg">{category.icon}</span>
+                <span className="whitespace-nowrap">{category.name}</span>
               </motion.button>
             ))}
           </motion.div>
@@ -106,7 +106,7 @@ const Skills = () => {
           {/* Skills Grid */}
           <motion.div
             layout
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6"
           >
             <AnimatePresence>
               {skills[activeCategory].map((skill, index) => (
@@ -118,7 +118,7 @@ const Skills = () => {
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ y: -5 }}
-                  className={`rounded-xl p-6 border transition-all duration-300 ${
+                  className={`rounded-xl p-3 sm:p-4 lg:p-6 border transition-all duration-300 ${
                     activeCategory === 'languages'
                       ? 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20 hover:border-blue-500/50'
                       : activeCategory === 'frameworks'
@@ -126,8 +126,8 @@ const Skills = () => {
                       : 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/20 hover:border-green-500/50'
                   }`}
                 >
-                  <div className="flex items-center space-x-4">
-                    <div className="w-8 h-8 relative flex-shrink-0 flex items-center justify-center">
+                  <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 relative flex-shrink-0 flex items-center justify-center">
                       {typeof skill.logo === 'string' && skill.logo.startsWith('/') ? (
                       <Image
                         src={skill.logo}
@@ -137,10 +137,10 @@ const Skills = () => {
                         className="w-full h-full object-contain"
                       />
                       ) : (
-                        <span className="text-2xl">{skill.logo}</span>
+                        <span className="text-xl sm:text-2xl">{skill.logo}</span>
                       )}
                     </div>
-                    <h3 className="text-lg font-semibold text-white">
+                    <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-white">
                       {skill.name}
                     </h3>
                   </div>
@@ -155,12 +155,12 @@ const Skills = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            className="mt-16 bg-gradient-to-r from-indigo-500/20 to-purple-600/20 rounded-xl p-8 border border-indigo-500/30"
+            className="mt-8 sm:mt-12 lg:mt-16 bg-gradient-to-r from-indigo-500/20 to-purple-600/20 rounded-xl p-4 sm:p-6 lg:p-8 border border-indigo-500/30"
           >
-            <h3 className="text-2xl font-bold text-white mb-4 text-center">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 text-center">
               Always Learning & Growing
             </h3>
-            <p className="text-gray-300 text-center max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-gray-300 text-center max-w-2xl mx-auto leading-relaxed">
               Technology evolves rapidly, and I'm committed to continuous learning. 
               I stay updated with the latest trends and best practices in web development, 
               always exploring new technologies and frameworks to enhance my skills.

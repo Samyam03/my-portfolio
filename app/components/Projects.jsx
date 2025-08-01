@@ -94,20 +94,20 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 relative">
+    <section id="projects" className="py-12 sm:py-16 lg:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass p-8 md:p-12 rounded-2xl shadow-lg">
+        <div className="glass p-4 sm:p-6 md:p-8 lg:p-12 rounded-2xl shadow-lg">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 lg:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
             My Projects
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-2">
             A showcase of my latest work and creative solutions
           </p>
         </motion.div>
@@ -115,7 +115,7 @@ const Projects = () => {
         {/* Projects List */}
         <motion.div
           layout
-          className="space-y-8"
+          className="space-y-6 sm:space-y-8"
         >
           <AnimatePresence>
             {projects.map((project, index) => (
@@ -129,10 +129,10 @@ const Projects = () => {
                 whileHover={{ x: 10 }}
                 className="group"
               >
-                <div className="bg-white/5 rounded-xl overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all duration-300 min-h-[340px] flex flex-col justify-between">
+                <div className="bg-white/5 rounded-xl overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all duration-300 min-h-[280px] sm:min-h-[340px] flex flex-col justify-between">
                   <div className="flex flex-col lg:flex-row">
                     {/* Project Image */}
-                    <div className="lg:w-1/3 relative h-48 lg:h-auto overflow-hidden">
+                    <div className="lg:w-1/3 relative h-48 sm:h-56 lg:h-auto overflow-hidden">
                       <a
                         href={project.title.includes('ShopSphere') ? 'https://shopsphere-xi-three.vercel.app/' : project.liveUrl}
                         target="_blank"
@@ -145,31 +145,31 @@ const Projects = () => {
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 cursor-pointer"
                         />
                         <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <span className="text-white font-semibold">Visit Website</span>
+                          <span className="text-white font-semibold text-sm sm:text-base">Visit Website</span>
                         </div>
                       </a>
                     </div>
 
                     {/* Project Content */}
-                    <div className="lg:w-2/3 p-6">
-                      <div className="flex items-start justify-between mb-4">
+                    <div className="lg:w-2/3 p-4 sm:p-6">
+                      <div className="flex items-start justify-between mb-3 sm:mb-4">
                         <div>
-                          <h3 className="text-2xl font-bold text-white mb-2">
+                          <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
                             {project.title}
                           </h3>
                         </div>
                       </div>
                       
-                      <p className="text-gray-300 mb-4 leading-relaxed">
+                      <p className="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 leading-relaxed">
                         {project.description}
                       </p>
                       
                       {/* Technologies */}
-                      <div className="flex flex-wrap gap-2 mb-6">
+                      <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6">
                         {project.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="px-3 py-1 bg-white/10 text-gray-300 text-sm rounded-full border border-white/20"
+                            className="px-2 sm:px-3 py-1 bg-white/10 text-gray-300 text-xs sm:text-sm rounded-full border border-white/20"
                           >
                             {tech}
                           </span>
@@ -177,20 +177,20 @@ const Projects = () => {
                       </div>
 
                       {/* Key Features */}
-                      <div className="mb-6">
-                        <h4 className="text-white font-semibold mb-3">Key Features:</h4>
-                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      <div className="mb-4 sm:mb-6">
+                        <h4 className="text-white font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Key Features:</h4>
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-1 sm:gap-2">
                           {project.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-center text-gray-300 text-sm">
-                              <span className="text-blue-400 mr-2">•</span>
-                              {feature}
+                            <li key={idx} className="flex items-start text-gray-300 text-xs sm:text-sm leading-relaxed">
+                              <span className="text-blue-400 mr-2 mt-0.5 flex-shrink-0">•</span>
+                              <span>{feature}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
 
                       {/* Action Buttons */}
-                      <div className="flex gap-3">
+                      <div className="flex flex-wrap gap-2 sm:gap-3">
                         {/* Special case for ShopSphere: show both Live Demo and Admin Demo */}
                         {project.title.includes('ShopSphere') ? (
                           <>
@@ -198,7 +198,7 @@ const Projects = () => {
                               href="https://shopsphere-xi-three.vercel.app/"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-300 cursor-pointer"
+                              className="bg-blue-600 text-white px-4 sm:px-6 py-2 rounded-lg text-xs sm:text-sm font-medium hover:bg-blue-700 transition-colors duration-300 cursor-pointer"
                             >
                               Live Demo
                             </motion.a>
@@ -206,7 +206,7 @@ const Projects = () => {
                               href="https://shopsphere-admin-rho.vercel.app/"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              className="bg-purple-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors duration-300 cursor-pointer"
+                              className="bg-purple-600 text-white px-4 sm:px-6 py-2 rounded-lg text-xs sm:text-sm font-medium hover:bg-purple-700 transition-colors duration-300 cursor-pointer"
                             >
                               Admin Demo
                             </motion.a>
@@ -214,7 +214,7 @@ const Projects = () => {
                               href="https://github.com/your-repo"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              className="bg-white/10 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-white/20 transition-colors duration-300 cursor-pointer"
+                              className="bg-white/10 text-white px-4 sm:px-6 py-2 rounded-lg text-xs sm:text-sm font-medium hover:bg-white/20 transition-colors duration-300 cursor-pointer"
                             >
                               GitHub
                             </motion.a>
@@ -225,7 +225,7 @@ const Projects = () => {
                               href={project.liveUrl}
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-300 cursor-pointer"
+                              className="bg-blue-600 text-white px-4 sm:px-6 py-2 rounded-lg text-xs sm:text-sm font-medium hover:bg-blue-700 transition-colors duration-300 cursor-pointer"
                             >
                               Live Demo
                             </motion.a>
@@ -233,7 +233,7 @@ const Projects = () => {
                               href={project.githubUrl}
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              className="bg-white/10 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-white/20 transition-colors duration-300 cursor-pointer"
+                              className="bg-white/10 text-white px-4 sm:px-6 py-2 rounded-lg text-xs sm:text-sm font-medium hover:bg-white/20 transition-colors duration-300 cursor-pointer"
                             >
                               GitHub
                             </motion.a>

@@ -1,3 +1,6 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Hero from './components/Hero';
 import Navigation from './components/Navigation';
 import About from './components/About';
@@ -7,23 +10,38 @@ import Experience from './components/Experience';
 import Leadership from './components/Leadership';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Effects from './components/Effects';
+import Background from './effects/Background';
 
 export default function Home() {
+  const [showContent, setShowContent] = useState(false);
+
+  const handleBackgroundReady = () => {
+    setShowContent(true);
+  };
+
   return (
     <main className="min-h-screen">
-      <Navigation />
-      <Hero />
-      
-      <Effects intensity="medium" planetCount={3} starCount={30} showMouseTorch={false}>
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Leadership />
-        <Contact />
-        <Footer />
-      </Effects>
+      {/* Background loads first */}
+      <Background 
+        intensity="medium" 
+        planetCount={2} 
+        starCount={20} 
+        showMouseTorch={false}
+        onBackgroundReady={handleBackgroundReady}
+      >
+        {/* Content appears after background is ready */}
+        <div className={`transition-all duration-1000 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <Navigation />
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Leadership />
+          <Contact />
+          <Footer />
+        </div>
+      </Background>
     </main>
   );
 }

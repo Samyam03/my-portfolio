@@ -86,53 +86,53 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 relative">
+    <section id="experience" className="py-12 sm:py-16 lg:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass p-8 md:p-12 rounded-2xl shadow-lg">
+        <div className="glass p-4 sm:p-6 md:p-8 lg:p-12 rounded-2xl shadow-lg">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 lg:mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
               Experience & Research
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-2">
               My professional experience and academic research contributions
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Company Tabs */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="lg:col-span-1"
+              className="lg:col-span-1 order-1"
             >
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {experiences.map((exp, index) => (
                   <motion.button
                     key={index}
                     whileHover={{ x: 10 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setActiveTab(index)}
-                    className={`w-full text-left p-6 rounded-lg transition-all duration-300 cursor-pointer ${
+                    className={`w-full text-left p-4 sm:p-6 rounded-lg transition-all duration-300 cursor-pointer ${
                       activeTab === index
                         ? 'bg-blue-600/20 border border-blue-500/50'
                         : 'bg-white/5 border border-white/10 hover:bg-white/10'
                     }`}
                   >
-                    <div className="flex items-center space-x-4">
-                      <div className="text-3xl">{exp.logo}</div>
+                    <div className="flex items-center space-x-3 sm:space-x-4">
+                      <div className="text-2xl sm:text-3xl">{exp.logo}</div>
                       <div>
-                        <h3 className="font-semibold text-white">
+                        <h3 className="font-semibold text-white text-sm sm:text-base">
                           {exp.company}
                         </h3>
-                        <p className="text-sm text-gray-300">
+                        <p className="text-xs sm:text-sm text-gray-300">
                           {exp.position}
                         </p>
                         <p className="text-xs text-gray-400">
@@ -151,7 +151,7 @@ const Experience = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="lg:col-span-2"
+              className="lg:col-span-2 order-2"
             >
               <AnimatePresence>
                 <motion.div
@@ -160,45 +160,45 @@ const Experience = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-white/5 rounded-xl p-8 border border-white/10"
+                  className="bg-white/5 rounded-xl p-4 sm:p-6 lg:p-8 border border-white/10"
                 >
-                  <div className="flex items-start justify-between mb-6">
+                  <div className="flex items-start justify-between mb-4 sm:mb-6">
                     <div>
-                      <h3 className="text-2xl font-bold text-white mb-2">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
                         {experiences[activeTab].position}
                       </h3>
-                      <p className="text-xl text-blue-400 mb-1">
+                      <p className="text-lg sm:text-xl text-blue-400 mb-1">
                         {experiences[activeTab].company}
                       </p>
-                      <p className="text-gray-400">
+                      <p className="text-sm sm:text-base text-gray-400">
                         {experiences[activeTab].duration} • {experiences[activeTab].location}
                       </p>
                     </div>
-                    <div className="text-4xl">
+                    <div className="text-3xl sm:text-4xl">
                       {experiences[activeTab].logo}
                     </div>
                   </div>
 
-                  <p className="text-gray-300 mb-8 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-300 mb-6 sm:mb-8 leading-relaxed">
                     {experiences[activeTab].description}
                   </p>
 
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     {/* Key Responsibilities */}
                     <div>
-                      <h4 className="text-lg font-semibold text-white mb-4">
+                      <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">
                         Key Responsibilities
                       </h4>
-                      <ul className="space-y-3">
+                      <ul className="space-y-2 sm:space-y-3">
                         {experiences[activeTab].achievements.map((achievement, index) => (
                           <motion.li
                             key={index}
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.1 }}
-                            className="flex items-start space-x-3 text-gray-300"
+                            className="flex items-start space-x-2 sm:space-x-3 text-gray-300 text-sm sm:text-base leading-relaxed"
                           >
-                            <span className="text-blue-400 mt-1">•</span>
+                            <span className="text-blue-400 mt-0.5 sm:mt-1 flex-shrink-0">•</span>
                             <span>{achievement}</span>
                           </motion.li>
                         ))}
@@ -207,17 +207,17 @@ const Experience = () => {
 
                     {/* Skills Developed */}
                     <div>
-                      <h4 className="text-lg font-semibold text-white mb-4">
+                      <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">
                         Skills Developed
                       </h4>
-                      <div className="flex flex-wrap gap-3">
+                      <div className="flex flex-wrap gap-2 sm:gap-3">
                         {experiences[activeTab].transferableSkills.map((skill, index) => (
                           <motion.span
                             key={skill}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.1 }}
-                            className="px-3 py-1 bg-green-500/20 text-green-300 text-sm rounded-full border border-green-500/30"
+                            className="px-2 sm:px-3 py-1 bg-green-500/20 text-green-300 text-xs sm:text-sm rounded-full border border-green-500/30"
                           >
                             {skill}
                           </motion.span>
@@ -236,36 +236,36 @@ const Experience = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            className="mt-16 bg-gradient-to-r from-blue-500/20 to-green-500/20 rounded-xl p-8 border border-blue-500/30"
+            className="mt-8 sm:mt-12 lg:mt-16 bg-gradient-to-r from-blue-500/20 to-green-500/20 rounded-xl p-4 sm:p-6 lg:p-8 border border-blue-500/30"
           >
-            <h3 className="text-2xl font-bold text-white mb-6 text-center">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 text-center">
               Professional Growth & Skill Development
             </h3>
-            <p className="text-gray-300 text-center max-w-3xl mx-auto mb-8">
+            <p className="text-sm sm:text-base text-gray-300 text-center max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed">
               Through my diverse experience in research and administration, I've developed a comprehensive skill set that combines analytical thinking with strong professional capabilities.
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
-                <h4 className="text-lg font-semibold text-white mb-3">Research & Analysis</h4>
-                <p className="text-gray-300 text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              <div className="bg-white/5 rounded-lg p-4 sm:p-6 border border-white/10 text-center">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-3">Research & Analysis</h4>
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
                   Conducted academic research on technology integration and computer science management
                 </p>
               </div>
-              <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
-                <h4 className="text-lg font-semibold text-white mb-3">Administrative Excellence</h4>
-                <p className="text-gray-300 text-sm">
+              <div className="bg-white/5 rounded-lg p-4 sm:p-6 border border-white/10 text-center">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-3">Administrative Excellence</h4>
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
                   Managed schedules, documentation, and office operations with attention to detail
                 </p>
               </div>
-              <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
-                <h4 className="text-lg font-semibold text-white mb-3">Data Management</h4>
-                <p className="text-gray-300 text-sm">
+              <div className="bg-white/5 rounded-lg p-4 sm:p-6 border border-white/10 text-center">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-3">Data Management</h4>
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
                   Handled confidential records and maintained organized filing systems
                 </p>
               </div>
-              <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
-                <h4 className="text-lg font-semibold text-white mb-3">Professional Communication</h4>
-                <p className="text-gray-300 text-sm">
+              <div className="bg-white/5 rounded-lg p-4 sm:p-6 border border-white/10 text-center">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-3">Professional Communication</h4>
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
                   Coordinated communication between diverse stakeholders and provided excellent service
                 </p>
               </div>

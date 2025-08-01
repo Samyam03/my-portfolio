@@ -63,13 +63,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+
 
 /* Line clamp utility */
 .line-clamp-2 {
@@ -80,64 +74,9 @@ body {
   line-clamp: 2;
 }
 
-/* Focus styles */
-.focus-ring {
-  outline: none;
-}
 
-.focus-ring:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #3b82f6, 0 0 0 4px #0f172a;
-}
 
-/* Custom button styles */
-.btn-primary {
-  background: linear-gradient(to right, #2563eb, #7c3aed);
-  color: white;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
-  transform: scale(1);
-}
 
-.btn-primary:hover {
-  background: linear-gradient(to right, #1d4ed8, #6d28d9);
-  transform: scale(1.05);
-}
-
-.btn-primary:active {
-  transform: scale(0.95);
-}
-
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
-  transform: scale(1);
-}
-
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.05);
-}
-
-.btn-secondary:active {
-  transform: scale(0.95);
-}
-
-/* Card hover effects */
-.card-hover {
-  transition: all 0.3s ease;
-}
-
-.card-hover:hover {
-  transform: scale(1.05);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
 
 /* Text selection */
 ::selection {
@@ -145,30 +84,7 @@ body {
   color: white;
 }
 
-/* Loading animation */
-.loading-dots {
-  display: inline-block;
-}
 
-.loading-dots::after {
-  content: '';
-  animation: dots 1.5s steps(5, end) infinite;
-}
-
-@keyframes dots {
-  0%, 20% {
-    content: '';
-  }
-  40% {
-    content: '.';
-  }
-  60% {
-    content: '..';
-  }
-  80%, 100% {
-    content: '...';
-  }
-}
 
 @keyframes spin-slow {
   from {
@@ -183,12 +99,4 @@ body {
   animation: spin-slow 20s linear infinite;
 }
 
-@media (max-width: 640px) {
-  .btn-primary, .btn-secondary {
-    padding: 0.5rem 1rem;
-    font-size: 0.95rem;
-  }
-  .card-hover {
-    padding: 1rem;
-  }
-}
+

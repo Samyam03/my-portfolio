@@ -6,10 +6,10 @@ import { motion } from 'framer-motion';
 // Space Logo Component
 const SpaceLogo = ({ size = 'md', className = '' }) => {
   const sizeClasses = {
-    sm: 'w-10 h-10 text-sm',
-    md: 'w-14 h-14 text-lg',
-    lg: 'w-16 h-16 text-xl',
-    xl: 'w-20 h-20 text-2xl'
+    sm: 'w-8 h-8 sm:w-10 sm:h-10 text-sm',
+    md: 'w-12 h-12 sm:w-14 sm:h-14 text-lg',
+    lg: 'w-14 h-14 sm:w-16 sm:h-16 text-xl',
+    xl: 'w-16 h-16 sm:w-20 sm:h-20 text-2xl'
   };
 
   return (
@@ -33,22 +33,36 @@ const SpaceLogo = ({ size = 'md', className = '' }) => {
 
 
 // Back To Top Button
-const BackToTopButton = () => (
-  <motion.button
-    initial={{ opacity: 0, scale: 0 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.6, delay: 0.6 }}
-    whileHover={{ scale: 1.1 }}
-    whileTap={{ scale: 0.9 }}
-    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-    className="fixed bottom-8 right-8 w-12 h-12 bg-purple-600 text-white rounded-full shadow-lg border border-purple-700 hover:bg-purple-700 hover:shadow-xl transition-all duration-300 z-50 flex items-center justify-center"
-    title="Back to top"
-  >
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-    </svg>
-  </motion.button>
-);
+const BackToTopButton = ({ delay = 2000 }) => {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShow(true);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [delay]);
+
+  if (!show) return null;
+
+  return (
+    <motion.button
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6 }}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 w-10 h-10 sm:w-12 sm:h-12 bg-purple-600 text-white rounded-full shadow-lg border border-purple-700 hover:bg-purple-700 hover:shadow-xl transition-all duration-300 z-50 flex items-center justify-center"
+      title="Back to top"
+    >
+      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      </svg>
+    </motion.button>
+  );
+};
 
 // Starfield Canvas
 const PLANET_COLORS = [
@@ -266,20 +280,31 @@ const StarfieldCanvas = ({ starCount = 80, planetCount = 3, showPlanets = true, 
   );
 };
 
-// Main Effects Component
-const Effects = ({ 
+// Main Background Component
+const Background = ({ 
   children, 
-  className = ''
+  className = '',
+  onBackgroundReady
 }) => {
+  const [isBackgroundReady, setIsBackgroundReady] = useState(false);
+
+  useEffect(() => {
+    // Content appears immediately when background is ready
+    setIsBackgroundReady(true);
+    if (onBackgroundReady) {
+      onBackgroundReady();
+    }
+  }, [onBackgroundReady]);
+
   return (
     <div className={`relative overflow-hidden ${className}`}>
       {/* Content */}
-      <div className="relative z-10">
+      <div className={`relative z-10 transition-opacity duration-1000 ${isBackgroundReady ? 'opacity-100' : 'opacity-0'}`}>
         {children}
       </div>
     </div>
   );
 };
 
-export default Effects;
+export default Background;
 export { SpaceLogo, BackToTopButton, StarfieldCanvas }; 

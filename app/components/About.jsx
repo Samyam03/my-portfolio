@@ -43,20 +43,20 @@ const About = () => {
 
 
   return (
-    <section id="about" className="py-20 relative">
+    <section id="about" className="py-12 sm:py-16 lg:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass p-8 md:p-12 rounded-2xl shadow-lg">
+        <div className="glass p-4 sm:p-6 md:p-8 lg:p-12 rounded-2xl shadow-lg">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 lg:mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
               About Me
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-2">
               Get to know the person behind the code
             </p>
           </motion.div>
@@ -68,9 +68,9 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-8 sm:mb-12"
             >
-              <p className="text-gray-300 leading-relaxed text-lg max-w-4xl mx-auto">
+              <p className="text-gray-300 leading-relaxed text-sm sm:text-base lg:text-lg max-w-4xl mx-auto px-2">
                 {aboutContent.description}
               </p>
             </motion.div>
@@ -81,20 +81,21 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="flex flex-wrap justify-center space-x-1 mb-12 bg-white/10 rounded-lg p-1 max-w-2xl mx-auto"
+              className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-1 mb-8 sm:mb-12 bg-white/10 rounded-lg p-1 max-w-2xl mx-auto"
             >
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex-1 py-2 px-8 rounded-md text-sm font-medium transition-all duration-300 cursor-pointer ${
+                  className={`flex-1 py-2 sm:py-3 px-4 sm:px-6 lg:px-8 rounded-md text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${
                     activeTab === tab.id
                       ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
                       : 'text-gray-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
-                  <span className="mr-2">{tab.icon}</span>
-                  {tab.label}
+                  <span className="mr-1 sm:mr-2">{tab.icon}</span>
+                  <span className="hidden sm:inline">{tab.label}</span>
+                  <span className="sm:hidden">{tab.label}</span>
                 </button>
               ))}
             </motion.div>
@@ -107,16 +108,16 @@ const About = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="space-y-8"
+                className="space-y-4 sm:space-y-6 lg:space-y-8"
               >
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
                   {aboutContent[activeTab].map((item, index) => (
                       <motion.div
                         key={index}
                       initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
-                      className={`flex items-start space-x-3 text-gray-300 rounded-lg p-4 border ${
+                      className={`flex items-start space-x-2 sm:space-x-3 text-gray-300 rounded-lg p-3 sm:p-4 border ${
                         activeTab === 'background' 
                           ? 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20' 
                           : activeTab === 'philosophy'
@@ -124,14 +125,14 @@ const About = () => {
                           : 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/20'
                       }`}
                       >
-                      <span className={`mt-1 text-lg ${
+                      <span className={`mt-0.5 sm:mt-1 text-base sm:text-lg ${
                         activeTab === 'background' 
                           ? 'text-blue-400' 
                           : activeTab === 'philosophy'
                           ? 'text-purple-400'
                           : 'text-green-400'
                       }`}>•</span>
-                      <span>{item}</span>
+                      <span className="text-xs sm:text-sm lg:text-base leading-relaxed">{item}</span>
                       </motion.div>
                     ))}
                 </div>
