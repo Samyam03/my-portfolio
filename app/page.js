@@ -29,9 +29,13 @@ export default function Home() {
         showMouseTorch={false}
         onBackgroundReady={handleBackgroundReady}
       >
+        {/* Navigation appears after background is ready but stays fixed at top */}
+        <div className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-1000 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <Navigation />
+        </div>
+        
         {/* Content appears after background is ready */}
         <div className={`transition-all duration-1000 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <Navigation />
           <Hero />
           <About />
           <Skills />

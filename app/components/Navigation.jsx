@@ -26,7 +26,7 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`w-full transition-all duration-300 ${
         scrolled 
           ? 'bg-slate-900/95 backdrop-blur-md border-b border-white/20 shadow-lg' 
           : 'bg-gradient-to-b from-slate-900/90 to-transparent backdrop-blur-sm'
@@ -99,7 +99,7 @@ const Navigation = () => {
 
       {/* Mobile Navigation */}
         {isOpen && (
-        <div className="md:hidden fixed top-14 sm:top-16 left-0 w-full bg-slate-900/95 backdrop-blur-md border-t border-white/20 shadow-lg z-50">
+        <div className="md:hidden fixed top-14 sm:top-16 left-0 w-full bg-slate-900/95 backdrop-blur-md border-t border-white/20 shadow-lg z-[9999]">
             <div className="px-3 sm:px-4 pt-3 sm:pt-4 pb-4 sm:pb-6 space-y-1 sm:space-y-2 flex flex-col">
             {navItems.map((item) => (
               <a

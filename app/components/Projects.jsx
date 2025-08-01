@@ -16,7 +16,7 @@ const Projects = () => {
         'Next.js 15', 'React 19', 'TypeScript', 'Convex', 'Clerk', 'Tailwind CSS', 'Recharts'
       ],
       liveUrl: 'https://splitz-smoky.vercel.app/',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/Samyam03/splitz',
       features: [
         'User authentication system',
         'Real-time expense tracking',
@@ -37,7 +37,7 @@ const Projects = () => {
         'React', 'Vite', 'Node.js', 'Express', 'MongoDB', 'Cloudinary'
       ],
       liveUrl: 'https://shopsphere-xi-three.vercel.app/',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/Samyam03/ecommerce-website',
       features: [
         'Customer-facing web app (product browsing, cart, checkout)',
         'Admin dashboard for product, order, and user management',
@@ -58,7 +58,7 @@ const Projects = () => {
         'Next.js 15', 'React 19', 'Tailwind CSS', 'Prisma ORM', 'PostgreSQL', 'Clerk', 'Google Gemini AI'
       ],
       liveUrl: 'https://elevatepath.vercel.app/',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/Samyam03/elevatepath',
       features: [
         'AI-powered resume and cover letter generation',
         'Technical interview preparation and quizzes',
@@ -79,7 +79,7 @@ const Projects = () => {
         'Next.js 15', 'React 19', 'Tailwind CSS', 'Convex', 'Google Gemini 2.0 Flash', 'LangChain', 'Clerk'
       ],
       liveUrl: 'https://notegenius-kappa.vercel.app/',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/Samyam03/ai_note_app',
       features: [
         'Upload and process PDF documents',
         'AI-powered Q&A and instant note generation',
@@ -115,7 +115,7 @@ const Projects = () => {
         {/* Projects List */}
         <motion.div
           layout
-          className="space-y-6 sm:space-y-8"
+          className="space-y-10 sm:space-y-12 lg:space-y-16"
         >
           <AnimatePresence>
             {projects.map((project, index) => (
@@ -211,7 +211,7 @@ const Projects = () => {
                               Admin Demo
                             </motion.a>
                             <motion.a
-                              href="https://github.com/your-repo"
+                              href="https://github.com/Samyam03/ecommerce-website"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                               className="bg-white/10 text-white px-4 sm:px-6 py-2 rounded-lg text-xs sm:text-sm font-medium hover:bg-white/20 transition-colors duration-300 cursor-pointer"
