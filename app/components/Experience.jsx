@@ -31,7 +31,7 @@ const Experience = () => {
         'Presentation Skills',
         'Industry Research'
       ],
-      logo: '💼'
+
     },
     {
       company: 'University Research Program',
@@ -57,7 +57,7 @@ const Experience = () => {
         'Presentation Skills',
         'User Experience Research'
       ],
-      logo: '🎓'
+
     },
     {
       company: 'Office of Student and Professional Affairs',
@@ -81,7 +81,7 @@ const Experience = () => {
         'Professionalism',
         'Confidentiality'
       ],
-      logo: '🏢'
+
     }
   ];
 
@@ -104,55 +104,50 @@ const Experience = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-            {/* Company Tabs */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="lg:col-span-1 order-1"
-            >
-              <div className="space-y-3 sm:space-y-4">
-                {experiences.map((exp, index) => (
-                  <motion.button
-                    key={index}
-                    whileHover={{ x: 10 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setActiveTab(index)}
-                    className={`w-full text-left p-4 sm:p-6 rounded-lg transition-all duration-300 cursor-pointer ${
-                      activeTab === index
-                        ? 'bg-blue-600/20 border border-blue-500/50'
-                        : 'bg-white/5 border border-white/10 hover:bg-white/10'
-                    }`}
-                  >
-                    <div className="flex items-center space-x-3 sm:space-x-4">
-                      <div className="text-2xl sm:text-3xl">{exp.logo}</div>
-                      <div>
-                        <h3 className="font-semibold text-white text-sm sm:text-base">
-                          {exp.company}
-                        </h3>
-                        <p className="text-xs sm:text-sm text-gray-300">
-                          {exp.position}
-                        </p>
-                        <p className="text-xs text-gray-400">
-                          {exp.duration}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
+          {/* Company Tabs - Horizontal */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-12 sm:mb-16"
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 w-full">
+              {experiences.map((exp, index) => (
+                <motion.button
+                  key={index}
+                  whileHover={{ y: -3, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setActiveTab(index)}
+                  className={`px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 rounded-xl transition-all duration-300 cursor-pointer text-left ${
+                    activeTab === index
+                      ? 'bg-blue-600/20 border-2 border-blue-500/50 text-white shadow-lg shadow-blue-500/20'
+                      : 'bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-gray-300 hover:text-white'
+                  }`}
+                >
+                  <div className="space-y-2">
+                    <h3 className="font-bold text-sm sm:text-base text-white">
+                      {exp.company}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-gray-300 font-medium">
+                      {exp.position}
+                    </p>
+                    <p className="text-xs text-gray-400">
+                      {exp.duration}
+                    </p>
+                  </div>
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
 
-            {/* Experience Details */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="lg:col-span-2 order-2"
-            >
+          {/* Experience Details */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
               <AnimatePresence>
                 <motion.div
                   key={activeTab}
@@ -162,41 +157,38 @@ const Experience = () => {
                   transition={{ duration: 0.3 }}
                   className="bg-white/5 rounded-xl p-4 sm:p-6 lg:p-8 border border-white/10"
                 >
-                  <div className="flex items-start justify-between mb-4 sm:mb-6">
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                  <div className="mb-8 sm:mb-10">
+                    <div className="space-y-4">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white">
                         {experiences[activeTab].position}
                       </h3>
-                      <p className="text-lg sm:text-xl text-blue-400 mb-1">
+                      <p className="text-lg sm:text-xl text-blue-400">
                         {experiences[activeTab].company}
                       </p>
                       <p className="text-sm sm:text-base text-gray-400">
                         {experiences[activeTab].duration} • {experiences[activeTab].location}
                       </p>
                     </div>
-                    <div className="text-3xl sm:text-4xl">
-                      {experiences[activeTab].logo}
-                    </div>
                   </div>
 
-                  <p className="text-sm sm:text-base text-gray-300 mb-6 sm:mb-8 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-300 mb-10 sm:mb-12 leading-relaxed">
                     {experiences[activeTab].description}
                   </p>
 
-                  <div className="space-y-4 sm:space-y-6">
+                  <div className="space-y-8 sm:space-y-10">
                     {/* Key Responsibilities */}
                     <div>
-                      <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">
+                      <h4 className="text-base sm:text-lg font-semibold text-white mb-5 sm:mb-6">
                         Key Responsibilities
                       </h4>
-                      <ul className="space-y-2 sm:space-y-3">
+                      <ul className="space-y-4 sm:space-y-5">
                         {experiences[activeTab].achievements.map((achievement, index) => (
                           <motion.li
                             key={index}
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.1 }}
-                            className="flex items-start space-x-2 sm:space-x-3 text-gray-300 text-sm sm:text-base leading-relaxed"
+                            className="flex items-start space-x-5 sm:space-x-6 text-gray-300 text-sm sm:text-base leading-relaxed pl-6 sm:pl-8"
                           >
                             <span className="text-blue-400 mt-0.5 sm:mt-1 flex-shrink-0">•</span>
                             <span>{achievement}</span>
@@ -207,17 +199,17 @@ const Experience = () => {
 
                     {/* Skills Developed */}
                     <div>
-                      <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">
+                      <h4 className="text-base sm:text-lg font-semibold text-white mb-5 sm:mb-6">
                         Skills Developed
                       </h4>
-                      <div className="flex flex-wrap gap-2 sm:gap-3">
+                      <div className="flex flex-wrap gap-3 sm:gap-4">
                         {experiences[activeTab].transferableSkills.map((skill, index) => (
                           <motion.span
                             key={skill}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.1 }}
-                            className="px-2 sm:px-3 py-1 bg-green-500/20 text-green-300 text-xs sm:text-sm rounded-full border border-green-500/30"
+                            className="px-3 sm:px-4 py-2 bg-green-500/20 text-green-300 text-xs sm:text-sm rounded-full border border-green-500/30"
                           >
                             {skill}
                           </motion.span>
@@ -228,7 +220,6 @@ const Experience = () => {
                 </motion.div>
               </AnimatePresence>
             </motion.div>
-          </div>
 
           {/* Professional Growth Section */}
           <motion.div
@@ -242,7 +233,7 @@ const Experience = () => {
               Professional Growth & Skill Development
             </h3>
             <p className="text-sm sm:text-base text-gray-300 text-center max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed">
-              Through my diverse experience in research and administration, I've developed a comprehensive skill set that combines analytical thinking with strong professional capabilities.
+              Through my diverse experience in research and administration, I&apos;ve developed a comprehensive skill set that combines analytical thinking with strong professional capabilities.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               <div className="bg-white/5 rounded-lg p-4 sm:p-6 border border-white/10 text-center">

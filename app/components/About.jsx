@@ -7,9 +7,9 @@ const About = () => {
   const [activeTab, setActiveTab] = useState('background');
 
   const tabs = [
-    { id: 'background', label: 'Background', icon: '🎓' },
-    { id: 'philosophy', label: 'Philosophy', icon: '💎' },
-    { id: 'goals', label: 'Goals', icon: '🎯' },
+    { id: 'background', label: 'Background' },
+    { id: 'philosophy', label: 'Philosophy' },
+    { id: 'goals', label: 'Goals' },
   ];
 
   const aboutContent = {
@@ -79,24 +79,28 @@ const About = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-1 mb-8 sm:mb-12 bg-white/10 rounded-lg p-1 max-w-2xl mx-auto"
+              className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 mb-8 sm:mb-12"
             >
               {tabs.map((tab) => (
-                <button
+                <motion.button
                   key={tab.id}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex-1 py-2 sm:py-3 px-4 sm:px-6 lg:px-8 rounded-md text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${
+                  className={`flex items-center justify-center space-x-2 px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all duration-300 cursor-pointer text-sm sm:text-base w-full sm:w-24 lg:w-32 ${
                     activeTab === tab.id
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                      : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      ? tab.id === 'background'
+                        ? 'bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border-2 border-blue-500/50 text-white shadow-lg shadow-blue-500/20'
+                        : tab.id === 'philosophy'
+                        ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 border-2 border-purple-500/50 text-white shadow-lg shadow-purple-500/20'
+                        : 'bg-gradient-to-r from-green-500/20 to-emerald-500/20 border-2 border-green-500/50 text-white shadow-lg shadow-green-500/20'
+                      : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'
                   }`}
                 >
-                  <span className="mr-1 sm:mr-2">{tab.icon}</span>
-                  <span className="hidden sm:inline">{tab.label}</span>
-                  <span className="sm:hidden">{tab.label}</span>
-                </button>
+                  <span className="whitespace-nowrap">{tab.label}</span>
+                </motion.button>
               ))}
             </motion.div>
 

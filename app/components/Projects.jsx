@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import Image from 'next/image';
 
 const Projects = () => {
   // Removed dialog/modal logic
@@ -139,9 +140,11 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         className="block w-full h-full"
                       >
-                        <img
+                        <Image
                           src={project.image}
                           alt={project.title}
+                          width={400}
+                          height={300}
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 cursor-pointer"
                         />
                         <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

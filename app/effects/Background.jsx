@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 // Space Logo Component
 const SpaceLogo = ({ size = 'md', className = '' }) => {
@@ -20,9 +21,11 @@ const SpaceLogo = ({ size = 'md', className = '' }) => {
     >
       {/* SB Logo Image */}
       <div className="relative w-full h-full flex items-center justify-center">
-        <img 
+        <Image 
           src="/SB.png" 
           alt="SB Logo" 
+          width={48}
+          height={48}
           className="w-full h-full object-contain"
         />
       </div>

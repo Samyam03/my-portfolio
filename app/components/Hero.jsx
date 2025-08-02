@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
+import Image from 'next/image';
 
 const Hero = () => {
 
@@ -24,9 +25,11 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
-                <img
+                <Image
                   src="/myImage.jpg"
                   alt="Samyam Bhattarai"
+                  width={384}
+                  height={384}
                   className="w-full h-full object-cover"
                 />
               </motion.div>
@@ -95,7 +98,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.5 }}
                 transition={{ duration: 0.2 }}
               ></motion.div>
-              <span className="text-blue-400 font-medium text-sm sm:text-base">Hello, I'm</span>
+              <span className="text-blue-400 font-medium text-sm sm:text-base">Hello, I&apos;m</span>
             </motion.div>
 
             {/* Centered Content on Small Screens, Left on Large */}
@@ -147,7 +150,7 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.6 }}
               >
                 Crafting digital experiences with modern technologies. 
-                Passionate about creating innovative solutions that make a difference in people's lives.
+                Passionate about creating innovative solutions that make a difference in people&apos;s lives.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -170,16 +173,18 @@ const Hero = () => {
                   transition={{ duration: 0.2 }}
                 >
                   <span>Explore Projects</span>
-                  <motion.svg 
-                    className="w-4 h-4 sm:w-5 sm:h-5 md:w-4 md:h-4 lg:w-5 lg:h-5" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
+                  <motion.div
                     whileHover={{ x: 3 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </motion.svg>
+                    <Image 
+                      src="/icons/arrow-right.svg" 
+                      alt="Arrow right" 
+                      width={20} 
+                      height={20} 
+                      className="w-4 h-4 sm:w-5 sm:h-5 md:w-4 md:h-4 lg:w-5 lg:h-5 filter brightness-0 invert"
+                    />
+                  </motion.div>
                 </motion.button>
                 <motion.a
                   href="/Samyam_Bhattarai.pdf"
@@ -191,16 +196,18 @@ const Hero = () => {
                   transition={{ duration: 0.2 }}
                 >
                   <span>View Resume</span>
-                  <motion.svg 
-                    className="w-4 h-4 sm:w-5 sm:h-5 md:w-4 md:h-4 lg:w-5 lg:h-5" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
+                  <motion.div
                     whileHover={{ y: -2 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </motion.svg>
+                    <Image 
+                      src="/icons/document-download.svg" 
+                      alt="Download document" 
+                      width={20} 
+                      height={20} 
+                      className="w-4 h-4 sm:w-5 sm:h-5 md:w-4 md:h-4 lg:w-5 lg:h-5 filter brightness-0 invert"
+                    />
+                  </motion.div>
                 </motion.a>
               </motion.div>
               
@@ -216,14 +223,18 @@ const Hero = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
-                  className="rounded-full bg-blue-600 hover:bg-blue-700 p-2 sm:p-3 md:p-2 lg:p-3 text-white shadow transition-all duration-300 cursor-pointer"
+                  className="rounded-full bg-blue-500 hover:bg-blue-600 p-2 sm:p-3 md:p-2 lg:p-3 text-white shadow-lg transition-all duration-300 cursor-pointer border border-blue-400"
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.9 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 md:w-6 md:h-6 lg:w-7 lg:h-7" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.29c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.29h-3v-4.5c0-1.1-.9-2-2-2s-2 .9-2 2v4.5h-3v-9h3v1.22c.41-.72 1.39-1.22 2.5-1.22 1.93 0 3.5 1.57 3.5 3.5v5.5z" />
-                  </svg>
+                  <Image 
+                    src="/icons/linkedin-simple.svg" 
+                    alt="LinkedIn" 
+                    width={28} 
+                    height={28} 
+                    className="w-6 h-6 sm:w-8 sm:h-8 md:w-6 md:h-6 lg:w-7 lg:h-7 filter brightness-0 invert"
+                  />
                 </motion.a>
                 <motion.a
                   href="https://github.com/Samyam03"
@@ -235,21 +246,29 @@ const Hero = () => {
                   whileTap={{ scale: 0.9 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 md:w-6 md:h-6 lg:w-7 lg:h-7" fill="black" viewBox="0 0 24 24">
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.304-5.466-1.334-5.466-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.984-.399 3.003-.404 1.019.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.625-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .322.218.694.825.576C20.565 21.796 24 17.297 24 12c0-6.63-5.373-12-12-12z" />
-                  </svg>
+                  <Image 
+                    src="/icons/github.svg" 
+                    alt="GitHub" 
+                    width={28} 
+                    height={28} 
+                    className="w-6 h-6 sm:w-8 sm:h-8 md:w-6 md:h-6 lg:w-7 lg:h-7"
+                  />
                 </motion.a>
                 <motion.a
                   href="mailto:samyambhattarai65@gmail.com"
                   aria-label="Email"
-                  className="rounded-full bg-purple-600 hover:bg-purple-700 p-2 sm:p-3 md:p-2 lg:p-3 text-white shadow transition-all duration-300 cursor-pointer"
+                  className="rounded-full bg-purple-500 hover:bg-purple-600 p-2 sm:p-3 md:p-2 lg:p-3 text-white shadow-lg transition-all duration-300 cursor-pointer border border-purple-400"
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.9 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 md:w-6 md:h-6 lg:w-7 lg:h-7" fill="white" viewBox="0 0 24 24">
-                    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4V8.99l8 6.99 8-6.99V18z" />
-                  </svg>
+                  <Image 
+                    src="/icons/email.svg" 
+                    alt="Email" 
+                    width={28} 
+                    height={28} 
+                    className="w-6 h-6 sm:w-8 sm:h-8 md:w-6 md:h-6 lg:w-7 lg:h-7 filter brightness-0 invert"
+                  />
                 </motion.a>
               </motion.div>
               
