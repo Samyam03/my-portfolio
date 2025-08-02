@@ -16,11 +16,21 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Samyam Bhattarai's Portfolio",
   description: "A modern, elegant showcase of Samyam Bhattarai's work—highlighting projects, skills, and creative solutions in web development and design.",
+  icons: {
+    icon: '/SB.png',
+    shortcut: '/SB.png',
+    apple: '/SB.png',
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/SB.png" />
+        <link rel="shortcut icon" href="/SB.png" />
+        <link rel="apple-touch-icon" href="/SB.png" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
