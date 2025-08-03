@@ -69,8 +69,8 @@ const Navigation = () => {
               >
                 <span>Resume</span>
                 <Image 
-                  src="/icons/document-download.svg" 
-                  alt="Download document" 
+                  src="/icons/document.svg" 
+                  alt="Document" 
                   width={20} 
                   height={20} 
                   className="w-4 h-4 sm:w-5 sm:h-5 filter brightness-0 invert"
@@ -125,8 +125,8 @@ const Navigation = () => {
             >
               <span>Resume</span>
               <Image 
-                src="/icons/document-download.svg" 
-                alt="Download document" 
+                src="/icons/document.svg" 
+                alt="Document" 
                 width={20} 
                 height={20} 
                 className="w-4 h-4 sm:w-5 sm:h-5 filter brightness-0 invert"

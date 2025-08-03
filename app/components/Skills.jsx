@@ -41,8 +41,6 @@ const Skills = () => {
       { name: 'Next.js', logo: '/logos/nextjs.svg' },
       { name: 'Node.js', logo: '/logos/nodejs.svg' },
       { name: 'Express.js', logo: '/logos/express.svg' },
-      { name: 'Angular', logo: '/logos/angular.svg' },
-      { name: 'Vue', logo: '/logos/vue.svg' },
       { name: 'PyTorch', logo: '/logos/pytorch.svg' }
     ],
     tools: [
