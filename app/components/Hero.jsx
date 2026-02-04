@@ -187,7 +187,7 @@ const Hero = () => {
                   </motion.div>
                 </motion.button>
                 <motion.a
-                  href="/Samyam_Bhattarai.pdf"
+                  href="/Samyam_Bhattarai_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 sm:px-6 md:px-5 lg:px-6 py-2 sm:py-3 md:py-2 lg:py-3 rounded-lg bg-purple-600 text-white font-semibold shadow-md border border-purple-700 hover:bg-purple-700 hover:shadow-lg transition-all duration-150 flex items-center justify-center space-x-2 text-sm sm:text-base md:text-sm lg:text-base cursor-pointer"

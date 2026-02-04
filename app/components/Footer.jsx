@@ -1,7 +1,13 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const [currentYear, setCurrentYear] = useState(2026);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
     <footer className="relative border-t border-white/10 bg-gradient-to-b from-transparent to-slate-900/20">

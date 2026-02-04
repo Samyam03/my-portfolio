@@ -36,9 +36,9 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 -ml-1">
             <a href="#home">
-              <SpaceLogo size="md" />
+              <SpaceLogo size="lg" className="!w-[84px] !h-[84px] sm:!w-[96px] sm:!h-[96px]" />
             </a>
           </div>
 
@@ -62,18 +62,18 @@ const Navigation = () => {
           {scrolled && (
             <div className="hidden md:block ml-2 lg:ml-4">
               <a
-                href="/Samyam_Bhattarai.pdf"
+                href="/Samyam_Bhattarai_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 sm:px-7 py-2 rounded-lg bg-purple-600 text-white font-semibold shadow-md border border-purple-700 hover:bg-purple-700 hover:shadow-lg transition-all duration-150 flex items-center space-x-2 text-sm sm:text-base"
+                className="px-5 py-2 rounded-lg bg-purple-600 text-white font-semibold shadow-md border border-purple-700 hover:bg-purple-700 hover:shadow-lg transition-all duration-150 flex items-center space-x-2 text-sm"
               >
                 <span>Resume</span>
                 <Image 
                   src="/icons/document.svg" 
                   alt="Document" 
-                  width={20} 
-                  height={20} 
-                  className="w-4 h-4 sm:w-5 sm:h-5 filter brightness-0 invert"
+                  width={18} 
+                  height={18} 
+                  className="w-4 h-4 filter brightness-0 invert"
                 />
               </a>
             </div>
@@ -117,19 +117,19 @@ const Navigation = () => {
               </a>
               ))}
             <a
-              href="/Samyam_Bhattarai.pdf"
+              href="/Samyam_Bhattarai_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-1 sm:mt-2 px-4 sm:px-7 py-2 rounded-lg bg-purple-600 text-white font-semibold shadow-md border border-purple-700 hover:bg-purple-700 hover:shadow-lg transition-all duration-150 flex items-center justify-center space-x-2 text-sm sm:text-base w-full"
+              className="mt-1 sm:mt-2 px-5 py-2 rounded-lg bg-purple-600 text-white font-semibold shadow-md border border-purple-700 hover:bg-purple-700 hover:shadow-lg transition-all duration-150 flex items-center justify-center space-x-2 text-sm w-full"
               onClick={() => setIsOpen(false)}
             >
               <span>Resume</span>
               <Image 
                 src="/icons/document.svg" 
                 alt="Document" 
-                width={20} 
-                height={20} 
-                className="w-4 h-4 sm:w-5 sm:h-5 filter brightness-0 invert"
+                width={18} 
+                height={18} 
+                className="w-4 h-4 filter brightness-0 invert"
               />
             </a>
             </div>
