@@ -14,23 +14,46 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL('https://samyambhattarai.com.np'),
   title: "Samyam Bhattarai's Portfolio",
   description: "A modern, elegant showcase of Samyam Bhattarai's work—highlighting projects, skills, and creative solutions in web development and design.",
+  keywords: ["Samyam Bhattarai", "Portfolio", "Web Developer", "Software Engineer", "React", "Next.js"],
+  authors: [{ name: "Samyam Bhattarai" }],
+  creator: "Samyam Bhattarai",
   icons: {
-    icon: '/SB.png',
-    shortcut: '/SB.png',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/SB.png', type: 'image/png' },
+    ],
     apple: '/SB.png',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://samyambhattarai.com.np',
+    siteName: "Samyam Bhattarai's Portfolio",
+    title: "Samyam Bhattarai's Portfolio",
+    description: "A modern, elegant showcase of Samyam Bhattarai's work—highlighting projects, skills, and creative solutions in web development and design.",
+    images: [
+      {
+        url: '/SB.png',
+        width: 512,
+        height: 512,
+        alt: 'Samyam Bhattarai Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary',
+    title: "Samyam Bhattarai's Portfolio",
+    description: "A modern, elegant showcase of Samyam Bhattarai's work—highlighting projects, skills, and creative solutions in web development and design.",
+    images: ['/SB.png'],
   },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/SB.png" />
-        <link rel="shortcut icon" href="/SB.png" />
-        <link rel="apple-touch-icon" href="/SB.png" />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
