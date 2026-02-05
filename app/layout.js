@@ -14,24 +14,22 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   metadataBase: new URL('https://samyambhattarai.com.np'),
-  title: "Samyam Bhattarai's Portfolio",
+  title: "Samyam Bhattarai",
   description: "A modern, elegant showcase of Samyam Bhattarai's work—highlighting projects, skills, and creative solutions in web development and design.",
   keywords: ["Samyam Bhattarai", "Portfolio", "Web Developer", "Software Engineer", "React", "Next.js"],
   authors: [{ name: "Samyam Bhattarai" }],
   creator: "Samyam Bhattarai",
   icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/SB.png', type: 'image/png' },
-    ],
+    icon: '/icon.png',
+    shortcut: '/icon.png',
     apple: '/SB.png',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://samyambhattarai.com.np',
-    siteName: "Samyam Bhattarai's Portfolio",
-    title: "Samyam Bhattarai's Portfolio",
+    siteName: "Samyam Bhattarai",
+    title: "Samyam Bhattarai",
     description: "A modern, elegant showcase of Samyam Bhattarai's work—highlighting projects, skills, and creative solutions in web development and design.",
     images: [
       {
@@ -44,7 +42,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary',
-    title: "Samyam Bhattarai's Portfolio",
+    title: "Samyam Bhattarai",
     description: "A modern, elegant showcase of Samyam Bhattarai's work—highlighting projects, skills, and creative solutions in web development and design.",
     images: ['/SB.png'],
   },
