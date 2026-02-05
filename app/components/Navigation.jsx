@@ -1,44 +1,65 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, memo, useMemo } from 'react';
 import { SpaceLogo } from '../effects/Background';
 import Image from 'next/image';
 
-const Navigation = () => {
+// Throttle utility for scroll events
+const throttle = (fn, delay) => {
+  let lastCall = 0;
+  return (...args) => {
+    const now = Date.now();
+    if (now - lastCall >= delay) {
+      lastCall = now;
+      fn(...args);
+    }
+  };
+};
+
+const Navigation = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    // Throttled scroll handler - fires at most every 100ms
+    const handleScroll = throttle(() => {
       setScrolled(window.scrollY > 50);
-    };
+    }, 100);
 
-    window.addEventListener('scroll', handleScroll);
+    // Check initial scroll position
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
+  // Memoize navItems to prevent recreation on each render
+  const navItems = useMemo(() => [
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Experience', href: '#experience' },
     { name: 'Contact', href: '#contact' },
-  ];
+  ], []);
+
+  // Memoize toggle handler
+  const toggleMenu = useCallback(() => setIsOpen(prev => !prev), []);
+  const closeMenu = useCallback(() => setIsOpen(false), []);
 
   return (
     <nav
       className={`w-full transition-all duration-300 ${
         scrolled 
           ? 'bg-slate-900/95 backdrop-blur-md border-b border-white/20 shadow-lg' 
-          : 'bg-gradient-to-b from-slate-900/90 to-transparent backdrop-blur-sm'
+          : 'bg-linear-to-b from-slate-900/90 to-transparent backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
-          <div className="flex-shrink-0 -ml-1">
+          <div className="shrink-0">
             <a href="#home">
-              <SpaceLogo size="lg" className="!w-[84px] !h-[84px] sm:!w-[96px] sm:!h-[96px]" />
+              <SpaceLogo size="md" className="w-10! h-10! sm:w-12! sm:h-12!" />
             </a>
           </div>
 
@@ -82,19 +103,19 @@ const Navigation = () => {
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-white focus:outline-none focus:text-white p-1 sm:p-2 rounded-md"
+              onClick={toggleMenu}
+              className="text-gray-300 hover:text-white focus:outline-none focus:text-white p-2 rounded-md"
               aria-label="Toggle navigation menu"
             >
-              <div className="w-6 h-6 sm:w-7 sm:h-7 flex flex-col justify-center items-center">
+              <div className="w-6 h-5 flex flex-col justify-between">
                 <span
-                  className={`w-6 sm:w-7 h-0.5 bg-current transform transition-all duration-300${isOpen ? ' rotate-45 translate-y-1 sm:translate-y-2' : ''}`}
+                  className={`w-6 h-0.5 bg-current transform transition-all duration-300 origin-center ${isOpen ? 'rotate-45 translate-y-[9px]' : ''}`}
                 />
                 <span
-                  className={`w-6 sm:w-7 h-0.5 bg-current transform transition-all duration-300 mt-1${isOpen ? ' opacity-0' : ''}`}
+                  className={`w-6 h-0.5 bg-current transition-all duration-300 ${isOpen ? 'opacity-0 scale-0' : ''}`}
                 />
                 <span
-                  className={`w-6 sm:w-7 h-0.5 bg-current transform transition-all duration-300 mt-1${isOpen ? ' -rotate-45 -translate-y-1 sm:-translate-y-2' : ''}`}
+                  className={`w-6 h-0.5 bg-current transform transition-all duration-300 origin-center ${isOpen ? '-rotate-45 -translate-y-[9px]' : ''}`}
                 />
               </div>
             </button>
@@ -103,25 +124,25 @@ const Navigation = () => {
       </div>
 
       {/* Mobile Navigation */}
-        {isOpen && (
-        <div className="md:hidden fixed top-14 sm:top-16 left-0 w-full bg-slate-900/95 backdrop-blur-md border-t border-white/20 shadow-lg z-[9999]">
-            <div className="px-3 sm:px-4 pt-3 sm:pt-4 pb-4 sm:pb-6 space-y-1 sm:space-y-2 flex flex-col">
+      {isOpen && (
+        <div className="md:hidden fixed top-14 sm:top-16 left-0 w-full bg-slate-900/95 backdrop-blur-md border-t border-white/20 shadow-lg z-9999">
+          <div className="px-4 py-4 space-y-2 flex flex-col">
             {navItems.map((item) => (
               <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-gray-300 hover:text-white block px-3 sm:px-4 py-2 sm:py-3 rounded-md text-base sm:text-lg font-medium transition-colors duration-300 w-full text-center"
-                >
-                  {item.name}
+                key={item.name}
+                href={item.href}
+                onClick={closeMenu}
+                className="text-gray-300 hover:text-white hover:bg-white/10 block px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 w-full text-center"
+              >
+                {item.name}
               </a>
-              ))}
+            ))}
             <a
               href="/Samyam_Bhattarai_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-1 sm:mt-2 px-5 py-2 rounded-lg bg-purple-600 text-white font-semibold shadow-md border border-purple-700 hover:bg-purple-700 hover:shadow-lg transition-all duration-150 flex items-center justify-center space-x-2 text-sm w-full"
-              onClick={() => setIsOpen(false)}
+              className="mt-2 px-5 py-3 rounded-lg bg-purple-600 text-white font-semibold shadow-md border border-purple-700 hover:bg-purple-700 hover:shadow-lg transition-colors duration-200 flex items-center justify-center gap-2 text-sm w-full"
+              onClick={closeMenu}
             >
               <span>Resume</span>
               <Image 
@@ -132,11 +153,12 @@ const Navigation = () => {
                 className="w-4 h-4 filter brightness-0 invert"
               />
             </a>
-            </div>
+          </div>
         </div>
-        )}
+      )}
     </nav>
   );
-};
+});
+Navigation.displayName = 'Navigation';
 
 export default Navigation; 

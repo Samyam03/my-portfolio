@@ -5,13 +5,6 @@
   --foreground: #f8fafc;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f172a;
-    --foreground: #f8fafc;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
@@ -37,11 +30,6 @@ body {
   background: #64748b;
 }
 
-/* Smooth animations */
-* {
-  transition: all 0.3s ease;
-}
-
 /* Custom animations */
 @keyframes float {
   0%, 100% {
@@ -58,12 +46,10 @@ body {
 
 /* Glassmorphism effect */
 .glass {
-  background: rgba(16, 23, 42, 0.7); /* darker, more opaque glass */
+  background: rgba(16, 23, 42, 0.7);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
-
-
 
 /* Line clamp utility */
 .line-clamp-2 {
@@ -74,17 +60,11 @@ body {
   line-clamp: 2;
 }
 
-
-
-
-
 /* Text selection */
 ::selection {
   background: rgba(59, 130, 246, 0.3);
   color: white;
 }
-
-
 
 @keyframes spin-slow {
   from {
@@ -98,5 +78,3 @@ body {
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
 }
-
-
