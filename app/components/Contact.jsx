@@ -46,9 +46,9 @@ const Contact = () => {
         <Image 
           src="/icons/linkedin-simple.svg" 
           alt="LinkedIn icon" 
-          width={40} 
-          height={40} 
-          className="w-8 h-8 sm:w-10 sm:h-10 filter brightness-0 invert"
+          width={44} 
+          height={44} 
+          className="w-9 h-9 sm:w-11 sm:h-11"
         />
       ),
       title: 'LinkedIn',
@@ -119,7 +119,7 @@ const Contact = () => {
                   className="group relative bg-white/5 rounded-xl p-8 sm:p-10 border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer overflow-hidden"
                 >
                   {/* Gradient overlay on hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${method.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                  <div className={`absolute inset-0 bg-linear-to-br ${method.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
                   
                   <div className="relative z-10">
                     <div className="flex items-center space-x-4 mb-6">
@@ -160,7 +160,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-xl p-8 sm:p-10"
+            className="bg-linear-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-xl p-8 sm:p-10"
           >
             <div className="text-center">
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">

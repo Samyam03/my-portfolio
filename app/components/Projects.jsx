@@ -5,8 +5,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 const Projects = () => {
-  // Removed dialog/modal logic
-
   const projects = [
     {
       id: 1,
@@ -185,7 +183,7 @@ const Projects = () => {
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-1 sm:gap-2">
                           {project.features.map((feature, idx) => (
                             <li key={idx} className="flex items-start text-gray-300 text-xs sm:text-sm leading-relaxed">
-                              <span className="text-blue-400 mr-2 mt-0.5 flex-shrink-0">•</span>
+                              <span className="text-blue-400 mr-2 mt-0.5 shrink-0">•</span>
                               <span>{feature}</span>
                             </li>
                           ))}

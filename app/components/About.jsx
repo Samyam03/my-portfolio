@@ -92,10 +92,10 @@ const About = () => {
                   className={`flex items-center justify-center space-x-2 px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all duration-300 cursor-pointer text-sm sm:text-base w-full sm:w-24 lg:w-32 ${
                     activeTab === tab.id
                       ? tab.id === 'background'
-                        ? 'bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border-2 border-blue-500/50 text-white shadow-lg shadow-blue-500/20'
+                        ? 'bg-linear-to-r from-blue-500/20 to-cyan-500/20 border-2 border-blue-500/50 text-white shadow-lg shadow-blue-500/20'
                         : tab.id === 'philosophy'
-                        ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 border-2 border-purple-500/50 text-white shadow-lg shadow-purple-500/20'
-                        : 'bg-gradient-to-r from-green-500/20 to-emerald-500/20 border-2 border-green-500/50 text-white shadow-lg shadow-green-500/20'
+                        ? 'bg-linear-to-r from-purple-500/20 to-pink-500/20 border-2 border-purple-500/50 text-white shadow-lg shadow-purple-500/20'
+                        : 'bg-linear-to-r from-green-500/20 to-emerald-500/20 border-2 border-green-500/50 text-white shadow-lg shadow-green-500/20'
                       : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'
                   }`}
                 >
@@ -123,10 +123,10 @@ const About = () => {
                         transition={{ delay: index * 0.1 }}
                       className={`flex items-start space-x-2 sm:space-x-3 text-gray-300 rounded-lg p-3 sm:p-4 border ${
                         activeTab === 'background' 
-                          ? 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20' 
+                          ? 'bg-linear-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20' 
                           : activeTab === 'philosophy'
-                          ? 'bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-purple-500/20'
-                          : 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/20'
+                          ? 'bg-linear-to-br from-purple-500/10 to-pink-500/10 border-purple-500/20'
+                          : 'bg-linear-to-br from-green-500/10 to-emerald-500/10 border-green-500/20'
                       }`}
                       >
                       <span className={`mt-0.5 sm:mt-1 text-base sm:text-lg ${

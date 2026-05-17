@@ -158,7 +158,7 @@ const Leadership = () => {
                             transition={{ delay: index * 0.1 }}
                             className="flex items-start space-x-5 sm:space-x-6 text-gray-300 text-sm sm:text-base leading-relaxed pl-6 sm:pl-8"
                           >
-                            <span className="text-blue-400 mt-0.5 sm:mt-1 flex-shrink-0">•</span>
+                            <span className="text-blue-400 mt-0.5 sm:mt-1 shrink-0">•</span>
                             <span>{achievement}</span>
                           </motion.li>
                         ))}
@@ -195,7 +195,7 @@ const Leadership = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            className="mt-8 sm:mt-12 lg:mt-16 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-xl p-4 sm:p-6 lg:p-8 border border-purple-500/30"
+            className="mt-8 sm:mt-12 lg:mt-16 bg-linear-to-r from-purple-500/20 to-blue-500/20 rounded-xl p-4 sm:p-6 lg:p-8 border border-purple-500/30"
           >
             <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 text-center">
               Leadership Impact & Community Building
