@@ -9,14 +9,14 @@ import Image from 'next/image';
 const NAV_ITEMS = [
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
-  { name: 'Certs', href: '#certifications', label: 'Certifications' },
+  { name: 'Certifications', href: '#certifications' },
   { name: 'Projects', href: '#projects' },
   { name: 'Experience', href: '#experience' },
   { name: 'Contact', href: '#contact' },
 ];
 
 const NAV_LINK_CLASS =
-  'text-gray-300 hover:text-white px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 relative group whitespace-nowrap';
+  'relative group whitespace-nowrap rounded-md px-2 py-2 text-xs font-medium text-gray-300 transition-colors duration-200 hover:text-white lg:px-2.5 lg:text-sm';
 
 function ResumeLink({ className, onClick, children = 'Resume', iconSize = 16 }) {
   return (
@@ -34,9 +34,18 @@ function ResumeLink({ className, onClick, children = 'Resume', iconSize = 16 }) 
           alt=""
           width={iconSize}
           height={iconSize}
-          className="w-4 h-4 invert"
+          className="h-4 w-4 shrink-0 invert"
         />
       )}
+    </a>
+  );
+}
+
+function NavLink({ item, onClick, className = NAV_LINK_CLASS }) {
+  return (
+    <a href={item.href} onClick={onClick} className={className}>
+      {item.name}
+      <span className="absolute bottom-1 left-2 right-2 h-0.5 origin-left scale-x-0 bg-blue-500 transition-transform duration-300 group-hover:scale-x-100" />
     </a>
   );
 }
@@ -67,85 +76,76 @@ const Navigation = memo(() => {
 
   return (
     <nav
-      className={`relative w-full transition-colors duration-300 ${
+      className={`relative z-50 w-full transition-colors duration-300 ${
         scrolled
-          ? 'bg-slate-900/95 backdrop-blur-md border-b border-white/20 shadow-lg'
-          : 'bg-linear-to-b from-slate-900/90 to-transparent backdrop-blur-sm'
+          ? 'border-b border-white/20 bg-slate-900/95 shadow-lg backdrop-blur-md'
+          : 'border-b border-transparent bg-linear-to-b from-slate-900/90 to-transparent backdrop-blur-sm'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14 sm:h-16 gap-3">
-          <div className="shrink-0">
-            <a href="#home" className="block" onClick={closeMenu}>
-              <SpaceLogo size="nav" />
-            </a>
-          </div>
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-2 px-4 sm:h-16 sm:gap-3 sm:px-6 lg:px-8">
+        <div className="shrink-0">
+          <a href="#home" className="block" onClick={closeMenu}>
+            <SpaceLogo size="nav" />
+          </a>
+        </div>
 
-          <div className="hidden lg:flex flex-1 items-center justify-center gap-1 xl:gap-2 min-w-0 px-2">
-            {NAV_ITEMS.map((item) => (
-              <a key={item.name} href={item.href} className={NAV_LINK_CLASS}>
-                {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
-          </div>
+        <div className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 lg:flex lg:gap-1">
+          {NAV_ITEMS.map((item) => (
+            <NavLink key={item.name} item={item} />
+          ))}
+        </div>
 
-          <div className="hidden lg:flex items-center shrink-0">
-            <ResumeLink className="px-4 py-2 rounded-lg bg-purple-600 text-white font-semibold shadow-md border border-purple-700 hover:bg-purple-700 transition-colors duration-200 flex items-center gap-2 text-sm whitespace-nowrap" />
-          </div>
+        <div className="hidden shrink-0 lg:flex">
+          <ResumeLink className="flex items-center gap-2 whitespace-nowrap rounded-lg border border-purple-700 bg-purple-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition-colors duration-200 hover:bg-purple-700" />
+        </div>
 
-          <div className="flex lg:hidden items-center gap-2 shrink-0 ml-auto">
-            {scrolled && (
-              <ResumeLink
-                className="hidden sm:flex px-3 py-1.5 rounded-lg bg-purple-600 text-white text-xs font-semibold border border-purple-700 hover:bg-purple-700 transition-colors items-center gap-1.5"
-                iconSize={0}
-              />
-            )}
-            <button
-              type="button"
-              onClick={toggleMenu}
-              className="text-gray-300 hover:text-white p-2 rounded-md"
-              aria-label={isOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={isOpen}
-            >
-              <div className="w-6 h-5 flex flex-col justify-between">
-                <span
-                  className={`block w-6 h-0.5 bg-current transition-all duration-300 origin-center ${
-                    isOpen ? 'rotate-45 translate-y-[9px]' : ''
-                  }`}
-                />
-                <span
-                  className={`block w-6 h-0.5 bg-current transition-all duration-300 ${
-                    isOpen ? 'opacity-0 scale-0' : ''
-                  }`}
-                />
-                <span
-                  className={`block w-6 h-0.5 bg-current transition-all duration-300 origin-center ${
-                    isOpen ? '-rotate-45 -translate-y-[9px]' : ''
-                  }`}
-                />
-              </div>
-            </button>
-          </div>
+        <div className="flex shrink-0 items-center gap-2 lg:hidden">
+          {scrolled && (
+            <ResumeLink
+              className="hidden items-center gap-1.5 rounded-lg border border-purple-700 bg-purple-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-purple-700 sm:flex"
+              iconSize={0}
+            />
+          )}
+          <button
+            type="button"
+            onClick={toggleMenu}
+            className="relative flex h-10 w-10 items-center justify-center rounded-md text-gray-300 transition-colors hover:bg-white/10 hover:text-white"
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
+          >
+            <span
+              className={`absolute left-1/2 top-[11px] h-0.5 w-5 -translate-x-1/2 bg-current transition-all duration-300 ${
+                isOpen ? 'top-1/2 -translate-y-1/2 rotate-45' : ''
+              }`}
+            />
+            <span
+              className={`absolute left-1/2 top-1/2 h-0.5 w-5 -translate-x-1/2 -translate-y-1/2 bg-current transition-all duration-300 ${
+                isOpen ? 'scale-0 opacity-0' : ''
+              }`}
+            />
+            <span
+              className={`absolute bottom-[11px] left-1/2 h-0.5 w-5 -translate-x-1/2 bg-current transition-all duration-300 ${
+                isOpen ? 'bottom-1/2 translate-y-1/2 -rotate-45' : ''
+              }`}
+            />
+          </button>
         </div>
       </div>
 
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-slate-900/98 backdrop-blur-md border-b border-white/20 shadow-xl z-50">
-          <div className="px-4 py-4 flex flex-col gap-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <div className="absolute left-0 right-0 top-full z-50 border-b border-white/20 bg-slate-900/98 shadow-xl backdrop-blur-md lg:hidden">
+          <div className="flex max-h-[calc(100dvh-3.5rem)] flex-col gap-1 overflow-y-auto px-4 py-4 sm:max-h-[calc(100dvh-4rem)]">
             {NAV_ITEMS.map((item) => (
-              <a
+              <NavLink
                 key={item.name}
-                href={item.href}
+                item={item}
                 onClick={closeMenu}
-                className="text-gray-300 hover:text-white hover:bg-white/10 block px-4 py-3 rounded-md text-base font-medium transition-colors text-center"
-              >
-                {item.label ?? item.name}
-              </a>
+                className="block rounded-md px-4 py-3 text-center text-base font-medium text-gray-300 transition-colors hover:bg-white/10 hover:text-white"
+              />
             ))}
             <ResumeLink
               onClick={closeMenu}
-              className="mt-2 px-5 py-3 rounded-lg bg-purple-600 text-white font-semibold border border-purple-700 hover:bg-purple-700 transition-colors flex items-center justify-center gap-2 text-sm"
+              className="mt-2 flex items-center justify-center gap-2 rounded-lg border border-purple-700 bg-purple-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-purple-700"
               iconSize={18}
             />
           </div>

@@ -114,7 +114,7 @@ const Projects = () => {
         {/* Projects List */}
         <motion.div
           layout
-          className="space-y-10 sm:space-y-12 lg:space-y-16"
+          className="space-y-8 sm:space-y-10 lg:space-y-12"
         >
           <AnimatePresence>
             {projects.map((project, index) => (
@@ -126,33 +126,36 @@ const Projects = () => {
                 exit={{ opacity: 0, x: 50 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ x: 10 }}
-                className="group"
+                className="group w-full md:w-3/4 max-w-full mx-auto"
               >
-                <div className="bg-white/5 rounded-xl overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all duration-300 min-h-[280px] sm:min-h-[340px] flex flex-col justify-between">
-                  <div className="flex flex-col lg:flex-row">
-                    {/* Project Image */}
-                    <div className="lg:w-1/3 relative h-48 sm:h-56 lg:h-auto overflow-hidden">
+                <div className="overflow-hidden rounded-xl border border-white/10 bg-white/5 transition-all duration-300 hover:border-blue-500/50">
+                  <div className="flex flex-col">
+                    {/* Image first — full width, full screenshot */}
+                    <div className="relative w-full shrink-0 overflow-hidden border-b border-white/10">
                       <a
                         href={project.title.includes('ShopSphere') ? 'https://shopsphere-xi-three.vercel.app/' : project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block w-full h-full"
+                        className="relative block leading-none"
+                        aria-label={`Visit ${project.title}`}
                       >
                         <Image
                           src={project.image}
                           alt={project.title}
-                          width={400}
-                          height={300}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 cursor-pointer"
+                          width={1920}
+                          height={1080}
+                          sizes="(max-width: 1280px) 75vw, 864px"
+                          priority={index === 0}
+                          className="w-full h-auto block transition-transform duration-300 group-hover:scale-[1.01] cursor-pointer"
                         />
-                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
                           <span className="text-white font-semibold text-sm sm:text-base">Visit Website</span>
                         </div>
                       </a>
                     </div>
 
-                    {/* Project Content */}
-                    <div className="lg:w-2/3 p-4 sm:p-6">
+                    {/* Text below */}
+                    <div className="p-3 sm:p-4 lg:p-5">
                       <div className="flex items-start justify-between mb-3 sm:mb-4">
                         <div>
                           <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
